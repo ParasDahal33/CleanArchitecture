@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Application": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitecture\\src\\WebUI",
+      "nativeDebugging": true,
+      "sqlDebugging": true,
+      "jsWebView2Debugging": true
+    }
+  }
+}
