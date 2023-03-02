@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using CleanArchitecture.Application.Common.Security;
+using CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.WebUI.Controllers;
@@ -6,6 +7,7 @@ namespace CleanArchitecture.WebUI.Controllers;
 [Route("api/WeatherForecast")]
 [Produces("application/json")]
 [ApiController]
+
 public class WeatherForecastController : ApiControllerBase
 {
     [HttpGet]

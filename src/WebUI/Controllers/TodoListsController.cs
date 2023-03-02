@@ -13,6 +13,8 @@ namespace CleanArchitecture.WebUI.Controllers;
 [ApiController]
 public class TodoListsController : ApiControllerBase
 {
+
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<ActionResult<TodosVm>> Get()
     {

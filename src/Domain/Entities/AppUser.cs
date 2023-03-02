@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
 namespace CleanArchitecture.Domain.Entities;
-public class AppUser: IdentityUser
+public class AppUser 
 {
 
 }

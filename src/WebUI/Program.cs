@@ -2,11 +2,12 @@ using CleanArchitecture.Infrastructure.Persistence;
 using WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
+builder.Services.ConfigureAuth(configuration);
 //builder.Services.ConfigureSwagger();
 
 var app = builder.Build();

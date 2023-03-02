@@ -1,14 +1,16 @@
-﻿using CleanArchitecture.Application.Authentication;
+﻿using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Application.Common.Security;
+using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
 using CleanArchitecture.WebUI.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.Controllers;
 [Route("api/[controller]")]
-//[Produces("application/json")]
+[Produces("application/json")]
 [ApiController]
 public class AuthController : ApiControllerBase
 {
@@ -18,6 +20,7 @@ public class AuthController : ApiControllerBase
         _identityService = identityService;
     }
 
+    
     [HttpPost("create-user")]
     public async Task<ActionResult<(Result Result, string UserId)>> CreateUserAsync(string userName, string password)
     {
@@ -29,22 +32,11 @@ public class AuthController : ApiControllerBase
         return response;
     }
 
-    [HttpPost("login-user")]
-    public async Task<ActionResult<UserLoginResponse>> Login(string email, string password)
+    [HttpPost("user-login")]
+    public async Task<ActionResult<UserLoginResponse>> Create(ValidateUserCommand command)
     {
-        try {
-            var response = await _identityService.ValidateUser(email, password);
-            return response;
-        }
-
-        catch(BadRequestException ex)
-        {
-            return BadRequest($"{ex.Message}");
-        }
-        catch(Exception ex)
-        {
-           return BadRequest(ex.Message);
-        }
-      
+        return await Mediator.Send(command);
     }
+
+
 }

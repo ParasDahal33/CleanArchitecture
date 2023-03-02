@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CleanArchitecture.Application.Authentication;
+using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Models;
 
 namespace CleanArchitecture.Application.Common.Interfaces;

@@ -1,7 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using CleanArchitecture.Application.Authentication;
+using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
@@ -101,14 +101,14 @@ public class IdentityService : IIdentityService
             throw new NotFoundException($"User with email {email} not found.");
         var lockOutResult = await _userManager.IsLockedOutAsync(user);
         if (_userManager.SupportsUserLockout && lockOutResult)
-            throw new BadRequestException($"User is locked out. Try again after 2 minutes");
+            throw new Exception($"User is locked out. Try again after 2 minutes");
         var result = await _userManager.CheckPasswordAsync(user,password);
         if (result == true)
         {
             if (user.UserStatus == UserStatus.InActive)
-               throw new BadRequestException("User Status is Deactivated. Please Consult to your Administrator.");
+               throw new Exception("User Status is Deactivated. Please Consult to your Administrator.");
             if (user.PwdExpiry < DateTime.Now)
-               throw new BadRequestException( "Your password has been expired");
+               throw new Exception( "Your password has been expired");
             if (_userManager.SupportsUserLockout && await _userManager.GetAccessFailedCountAsync(user) > 0)
             {
                 await _userManager.ResetAccessFailedCountAsync(user);
@@ -137,7 +137,7 @@ public class IdentityService : IIdentityService
             {
                 await _userManager.AccessFailedAsync(user);
             }
-            throw new BadRequestException($"Incorrect Password.");
+            throw new BadRequestException("Incorrect Password ");
         }
 
     }

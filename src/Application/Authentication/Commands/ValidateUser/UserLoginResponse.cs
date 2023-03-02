@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Application.Authentication;
+namespace CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 public class UserLoginResponse
 {
     public string AccessToken { get; set; } = string.Empty;

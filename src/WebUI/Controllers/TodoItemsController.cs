@@ -15,6 +15,7 @@ namespace CleanArchitecture.WebUI.Controllers;
 public class TodoItemsController : ApiControllerBase
 {
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<PaginatedList<TodoItemBriefDto>>> GetTodoItemsWithPagination([FromQuery] GetTodoItemsWithPaginationQuery query)
     {
         return await Mediator.Send(query);
