@@ -10,8 +10,8 @@ using MediatR;
 namespace CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 public record ValidateUserCommand : IRequest<UserLoginResponse>
 {
-    public string Email { get; init; }
-    public string Password { get; init; }
+    public string Email { get; init; } = string.Empty;
+    public string Password { get; init; } = string.Empty;
 }
 
 public class ValidateUserCommandHandler : IRequestHandler<ValidateUserCommand, UserLoginResponse>
@@ -27,4 +27,3 @@ public class ValidateUserCommandHandler : IRequestHandler<ValidateUserCommand, U
         return response;
     }
 }
-

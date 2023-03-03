@@ -1,4 +1,8 @@
-﻿using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
+﻿using CleanArchitecture.Application.Authentication.Commands.ConfirmEmail;
+using CleanArchitecture.Application.Authentication.Commands.ForgotPassword;
+using CleanArchitecture.Application.Authentication.Commands.ReSendEmailConfirmation;
+using CleanArchitecture.Application.Authentication.Commands.SendEmailConfirmation;
+using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
@@ -38,5 +42,26 @@ public class AuthController : ApiControllerBase
         return await Mediator.Send(command);
     }
 
+    [HttpPost("send-email-confirmation")]
+    public async Task<ActionResult<bool>> SendEmailConfirmation(SendEmailConfirmationCommand command)
+    { 
+        return await Mediator.Send(command);
+    }
 
+    [HttpPost("resend-email-confirmation")]
+    public async Task<ActionResult<bool>> ReSendEmailConfirmation(ReSendEmailConfirmationCommand command)
+    {
+        return await Mediator.Send(command);
+    }
+    [HttpGet("confirm-email")]
+    public async Task<ActionResult<EmailConfirmResponse>> ConfirmEmail(ConfirmEmailCommand command)
+    {
+        return await Mediator.Send(command);
+    }
+
+    [HttpPost("forgot-password")]
+    public async Task<ActionResult<bool>> ForgotPassword(ForgotPasswordCommand command)
+    {
+        return await Mediator.Send(command);
+    }
 }

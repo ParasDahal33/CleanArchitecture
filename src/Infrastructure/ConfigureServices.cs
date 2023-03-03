@@ -1,10 +1,12 @@
 ﻿using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Application.Common.Utils.EmailConfiguration;
 using CleanArchitecture.Infrastructure.Files;
 using CleanArchitecture.Infrastructure.Identity;
 using CleanArchitecture.Infrastructure.Persistence;
 using CleanArchitecture.Infrastructure.Persistence.Interceptors;
 using CleanArchitecture.Infrastructure.Services;
 using CleanArchitecture.Infrastructure.Utils.Extensions;
+using CleanArchitecture.Infrastructure.Utils.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -34,9 +36,16 @@ public static class ConfigureServices
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
         services.AddScoped<ApplicationDbContextInitialiser>();
 
+
         services.ConfigureIdentity();
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
+        services.AddTransient<IEmailService, EmailService>();
+        services.AddTransient<IEmailConfirmTokenHelper, EmailConfirmTokenHelper>();
+        services.AddTransient<IPasswordResetTokenHelper, PasswordResetTokenHelper>();
+        services.AddTransient<TokenHelper, EmailConfirmTokenHelper>();
+        services.AddTransient<TokenHelper, PasswordResetTokenHelper>();
+        services.AddTransient<EmailConfiguration>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
         return services;

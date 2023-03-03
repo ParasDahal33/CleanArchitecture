@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using CleanArchitecture.Application.Authentication.Commands.ConfirmEmail;
 using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Models;
 
@@ -17,4 +18,9 @@ public interface IIdentityService
     Task<UserLoginResponse> ValidateUser(string email, string password);
 
     Task<Result> DeleteUserAsync(string userId);
+
+    Task<bool> SendEmailConfirmation(string Email);
+    Task<bool> ReSendEmailConfirmation(string Id);
+    Task<bool> ForgotPassword(string Email);
+    Task<EmailConfirmResponse> ConfirmEmail(string id, string token);
 }

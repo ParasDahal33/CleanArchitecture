@@ -1,12 +1,16 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using CleanArchitecture.Application.Authentication.Commands.ConfirmEmail;
 using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Application.Common.Utils.EmailConfiguration;
 using CleanArchitecture.Domain.Entities;
+using CleanArchitecture.Domain.Enums;
 using CleanArchitecture.Infrastructure.Persistence;
+using CleanArchitecture.Infrastructure.Utils.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -21,21 +25,27 @@ public class IdentityService : IIdentityService
     private readonly IUserClaimsPrincipalFactory<ApplicationUser> _userClaimsPrincipalFactory;
     private readonly IAuthorizationService _authorizationService;
     private readonly ApplicationDbContext _db;
+    private readonly IEmailConfirmTokenHelper _emailConfirmToken;
     private readonly IConfiguration _configuration;
+    private readonly IEmailService _emailService;
 
 
     public IdentityService(
         UserManager<ApplicationUser> userManager,
         IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
+        IEmailConfirmTokenHelper emailConfrimationToken,
         IConfiguration configuration,
         ApplicationDbContext db,
-        IAuthorizationService authorizationService)
+        IAuthorizationService authorizationService,
+        IEmailService emailService)
     {
         _userManager = userManager;
         _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
         _authorizationService = authorizationService;
         _db = db;
         _configuration= configuration;
+        _emailConfirmToken = emailConfrimationToken;
+        _emailService = emailService;
     }
 
     public async Task<string> GetUserNameAsync(string userId)
@@ -142,6 +152,87 @@ public class IdentityService : IIdentityService
 
     }
 
+    public async Task<EmailConfirmResponse> ConfirmEmail(string id, string token)
+    {
+        if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(id))
+            throw new BadRequestException("something is wrong with the link. Try it again");
+
+        var user = await _userManager.FindByIdAsync(id);
+
+        if (user is null)
+           throw new NotFoundException("User not found");
+
+        if (user.EmailConfirmed && user.PasswordHash != null)
+        {
+            throw new BadRequestException("Email already confirmed!");
+        }
+        if (await _emailConfirmToken.ConfirmEmailAction(user, token))
+        {
+            var result = new EmailConfirmResponse
+            {
+                Id = id,
+                ResetToken = await _userManager.GeneratePasswordResetTokenAsync(user)
+            };
+            return result;
+        }
+        throw new BadRequestException("Failed to confirm email.");
+
+    }
+
+    public async Task<bool> ForgotPassword(string Email)
+    {
+        if (string.IsNullOrWhiteSpace(Email))
+            throw new BadRequestException("Email is empty");
+        var user = await _userManager.FindByEmailAsync(Email);
+        if (user is null)
+            throw new NotFoundException("User not found");
+
+        string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var url = CreateUrlLink(user.Id, token, UrlActions.resetpassword.ToString());
+
+        var mailAddress = new EmailAddress { DisplayName = user.UserName, Address = user.Email };
+        var message = new Message(new EmailAddress[] { mailAddress }, "Reset your password", Constants.GetForgetPasswordHtml(user.UserName, url), null);
+
+        await _emailService.SendEmailAsync(message);
+        return true;
+    }
+
+    
+    public async Task<bool> ReSendEmailConfirmation(string Id)
+    {
+        var user = await _userManager.FindByIdAsync(Id);
+        if (user is null)
+            throw new BadRequestException("User not found");
+        if (user.EmailConfirmed == true)
+        {
+           throw new BadRequestException("User Email already confirmed.");
+        }
+        var result = await SendEmailConfirmation(user.Email);
+        if (result.Equals(false))
+        {
+            throw new BadRequestException("Failed to send confirmation");
+        }
+        return true;
+    }
+
+
+    public async Task<bool> SendEmailConfirmation(string Email)
+    {
+        if (string.IsNullOrWhiteSpace(Email))
+            throw new BadRequestException("Email is empty");
+        var user = await _userManager.FindByEmailAsync(Email);
+        if (user is null)
+            throw new NotFoundException("User not found");
+
+        var token = await _emailConfirmToken.GenerateToken(user);
+        var url = CreateUrlLink(user.Id, token, UrlActions.confirmEmail.ToString());
+        var mailAddress = new EmailAddress { DisplayName = user.UserName, Address = user.Email };
+        var message = new Message(new EmailAddress[] { mailAddress }, "Email Confirmation", Constants.GetConfirmEmailHtml(user.UserName, url), null);
+        await _emailService.SendEmailAsync(message);
+        return true;
+    }
+
+
 
 
     ///
@@ -199,6 +290,11 @@ public class IdentityService : IIdentityService
                     System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value);
         var secret = new SymmetricSecurityKey(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
+    }
+    private string CreateUrlLink(string id, string token, string action)
+    {
+        string link = $"{_configuration["AppUrl"]}/login/{action}?id={id}&token={token}";
+        return link;
     }
 
 }
