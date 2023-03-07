@@ -12,6 +12,7 @@ using CleanArchitecture.Domain.Enums;
 using CleanArchitecture.Infrastructure.Persistence;
 using CleanArchitecture.Infrastructure.Utils.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,7 @@ public class IdentityService : IIdentityService
     private readonly IAuthorizationService _authorizationService;
     private readonly ApplicationDbContext _db;
     private readonly IEmailConfirmTokenHelper _emailConfirmToken;
+    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IConfiguration _configuration;
     private readonly IEmailService _emailService;
 
@@ -37,6 +39,7 @@ public class IdentityService : IIdentityService
         IEmailConfirmTokenHelper emailConfrimationToken,
         IConfiguration configuration,
         ApplicationDbContext db,
+         IHttpContextAccessor httpContextAccessor,
         IAuthorizationService authorizationService,
         IEmailService emailService)
     {
@@ -47,6 +50,7 @@ public class IdentityService : IIdentityService
         _configuration= configuration;
         _emailConfirmToken = emailConfrimationToken;
         _emailService = emailService;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<string> GetUserNameAsync(string userId)
@@ -338,9 +342,17 @@ public class IdentityService : IIdentityService
 
     }
 
-    public Task<bool> RevokeLoggedInUser()
+    public async Task<bool> RevokeLoggedInUser()
     {
-        throw new NotImplementedException();
+        var userEmail = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
+        var user = await _userManager.FindByEmailAsync(userEmail);
+        if (user is null)
+            throw new NotFoundException("User not found");
+        // Delete all the tokens associated with the user from the database.
+        var currentUserTokens = _db.UserRefreshTokens.Where(u => u.UserId == user.Id);
+        _db.UserRefreshTokens.RemoveRange(currentUserTokens);
+        await _db.SaveChangesAsync();
+        return true;
     }
 
     public Task<bool> ChangePassword(string oldPassword, string password, string confirmPassword)
