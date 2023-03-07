@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Application.Authentication.Commands.ConfirmEmail;
 using CleanArchitecture.Application.Authentication.Commands.ForgotPassword;
+using CleanArchitecture.Application.Authentication.Commands.RefreshToken;
 using CleanArchitecture.Application.Authentication.Commands.ReSendEmailConfirmation;
 using CleanArchitecture.Application.Authentication.Commands.SendEmailConfirmation;
 using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
@@ -64,4 +65,11 @@ public class AuthController : ApiControllerBase
     {
         return await Mediator.Send(command);
     }
+
+    [HttpPost("refresh-token")]
+    public async Task<ActionResult<UserLoginResponse>>RefreshToken(RefreshTokenCommand command)
+    {
+        return await Mediator.Send(command);
+    }
+
 }

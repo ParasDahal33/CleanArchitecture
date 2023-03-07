@@ -30,6 +30,7 @@ public class IdentityService : IIdentityService
     private readonly IEmailService _emailService;
 
 
+    
     public IdentityService(
         UserManager<ApplicationUser> userManager,
         IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
@@ -297,4 +298,58 @@ public class IdentityService : IIdentityService
         return link;
     }
 
+    public async Task<UserLoginResponse> RefreshToken(string AccessToken, string RefreshToken)
+    {
+        var currentToken = _db.UserRefreshTokens.FirstOrDefault(t => t.UserRefreshToken == RefreshToken);
+        if (currentToken == null)
+        {
+            throw new BadRequestException("Invalid token.");
+        }
+        var userId = currentToken.UserId;
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            throw new BadRequestException("Invalid token.");
+        }
+        if (currentToken.RefreshTokenExpiryTime <= DateTime.Now)
+        {
+            throw new BadRequestException("Token already expired.");
+        }
+        var newAccessToken = await CreateAccessToken(user);
+        var newRefreshToken = CreateRefreshToken();
+        // Add the new refresh token to te database.
+        var newUserToken = new UserToken
+        {
+            UserId = user.Id
+        };
+        var jwtSettings = _configuration.GetSection("JwtSettings");
+        newUserToken.UserRefreshToken = newRefreshToken;
+        newUserToken.RefreshTokenExpiryTime = DateTime.Now.AddDays(Convert.ToDouble(jwtSettings.GetSection("expires").Value));
+        // TODO try catch
+        using var transaction = _db.Database.BeginTransaction();
+        _db.UserRefreshTokens.Add(newUserToken);
+        // Remove the old token from the database.
+        _db.UserRefreshTokens.Remove(currentToken);
+        _db.SaveChanges();
+        await transaction.CommitAsync();
+        await _userManager.UpdateAsync(user);
+        return (new UserLoginResponse
+        { AccessToken = newAccessToken, RefreshToken = newRefreshToken });
+
+    }
+
+    public Task<bool> RevokeLoggedInUser()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ChangePassword(string oldPassword, string password, string confirmPassword)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ExtendPassword(string email, string password, string confirmPassword)
+    {
+        throw new NotImplementedException();
+    }
 }
