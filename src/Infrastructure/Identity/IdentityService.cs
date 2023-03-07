@@ -160,7 +160,7 @@ public class IdentityService : IIdentityService
     public async Task<EmailConfirmResponse> ConfirmEmail(string id, string token)
     {
         if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(id))
-            throw new BadRequestException("something is wrong with the link. Try it again");
+            throw new BadRequestException("Something is wrong with the link. Try it again");
 
         var user = await _userManager.FindByIdAsync(id);
 
@@ -373,8 +373,24 @@ public class IdentityService : IIdentityService
         return true;
     }
 
-    public Task<bool> ExtendPassword(string email, string password, string confirmPassword)
+    public async Task<bool> ExtendPassword(string email, string password, string confirmPassword)
     {
-        throw new NotImplementedException();
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user is null)
+            throw new NotFoundException("User not found");
+        if (user.PwdExpiry > DateTime.Now)
+            throw new BadRequestException("Your Password has not been expired yet.");
+        if (password != confirmPassword)
+            throw new BadRequestException("Incorrect Confirm Password");
+        user.PwdExpiry = DateTime.Now.AddMonths(6);
+        user.PasswordChangeDate = DateTime.Now;
+        var resultOne = await _userManager.UpdateAsync(user);
+        var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var result = await _userManager.ResetPasswordAsync(user, code, password);
+        if (!result.Succeeded)
+        {
+            throw new BadRequestException("Attempt Unsuccessfull.");
+        }
+        return true;
     }
 }

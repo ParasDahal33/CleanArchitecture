@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
 using CleanArchitecture.Application.Authentication.Commands.ChangePassword;
+using CleanArchitecture.Application.Authentication.Commands.ExtendPassword;
 
 namespace WebUI.Controllers;
 
@@ -21,31 +22,12 @@ namespace WebUI.Controllers;
 [ApiController]
 public class AuthController : ApiControllerBase
 {
-    private readonly IIdentityService _identityService;
-    public AuthController(IIdentityService identityService)
-    {
-        _identityService = identityService;
-    }
-
-    [HttpPost("create-user")]
-    
-    public async Task<ActionResult<(Result Result, string UserId)>> CreateUserAsync(string userName, string password)
-    {
-        var response = await _identityService.CreateUserAsync(userName, password);
-        if (response.Result.Succeeded == false)
-        {
-            return BadRequest(response.Result);
-        }
-        return response;
-    }
 
     [HttpPost("user-login")]
-    public async Task<ActionResult<UserLoginResponse>> Create(ValidateUserCommand command)
+    public async Task<ActionResult<UserLoginResponse>> Login(ValidateUserCommand command)
     {
         return await Mediator.Send(command);
     }
-
-  
     
     [HttpPost("send-email-confirmation")]
     public async Task<ActionResult<bool>> SendEmailConfirmation(SendEmailConfirmationCommand command)
@@ -91,4 +73,10 @@ public class AuthController : ApiControllerBase
         return await Mediator.Send(command);
     }
 
+    [HttpPost("extend-password")]
+    [Microsoft.AspNetCore.Authorization.Authorize]
+    public async Task<ActionResult<bool>> ExtendPassword(ExtendPasswordCommand command)
+    {
+        return await Mediator.Send(command);
+    }
 }
