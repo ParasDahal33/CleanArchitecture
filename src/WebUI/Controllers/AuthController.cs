@@ -12,6 +12,7 @@ using CleanArchitecture.WebUI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Application.Authentication.Commands.ChangePassword;
 
 namespace WebUI.Controllers;
 
@@ -27,7 +28,7 @@ public class AuthController : ApiControllerBase
     }
 
     [HttpPost("create-user")]
-  
+    
     public async Task<ActionResult<(Result Result, string UserId)>> CreateUserAsync(string userName, string password)
     {
         var response = await _identityService.CreateUserAsync(userName, password);
@@ -77,8 +78,15 @@ public class AuthController : ApiControllerBase
 
     
     [HttpPost("revoke-loggedIn-user")]
-    [Authorize]
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public async Task<ActionResult<bool>>RevokeLoggedInUser(RevokeLoggedInUserCommand command)
+    {
+        return await Mediator.Send(command);
+    }
+
+    [HttpPost("change-password")]
+    [Microsoft.AspNetCore.Authorization.Authorize]
+    public async Task <ActionResult<bool>> ChangePassword(ChangePasswordCommand command)
     {
         return await Mediator.Send(command);
     }

@@ -355,9 +355,22 @@ public class IdentityService : IIdentityService
         return true;
     }
 
-    public Task<bool> ChangePassword(string oldPassword, string password, string confirmPassword)
+    public async Task<bool> ChangePassword(string oldPassword, string password, string confirmPassword)
     {
-        throw new NotImplementedException();
+        var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _userManager.FindByIdAsync(userId);
+        if (password != confirmPassword)
+        {
+            throw new BadRequestException("Incorrect Confirm password");
+        }
+        if (user is null)
+            throw new NotFoundException("User not found");
+        var result = await _userManager.ChangePasswordAsync(user, oldPassword, password);
+        if (!result.Succeeded)
+        {
+            throw new BadRequestException("Attempt Unsuccessful");
+        }
+        return true;
     }
 
     public Task<bool> ExtendPassword(string email, string password, string confirmPassword)

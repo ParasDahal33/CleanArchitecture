@@ -22,6 +22,7 @@ public class TodoItemsController : ApiControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<int>> Create(CreateTodoItemCommand command)
     {
         return await Mediator.Send(command);

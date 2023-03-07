@@ -8,7 +8,7 @@ using MediatR;
 
 namespace CleanArchitecture.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
-[Authorize(Roles ="Admin")]
+//[Authorize(Roles ="Admin")]
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {
     public int ListId { get; init; }
