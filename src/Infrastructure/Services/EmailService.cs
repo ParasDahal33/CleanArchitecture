@@ -9,8 +9,6 @@ using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Utils.EmailConfiguration;
 using CleanArchitecture.Infrastructure.Identity;
 using MailKit.Net.Smtp;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using MimeKit;
 
 namespace CleanArchitecture.Infrastructure.Services;

@@ -226,10 +226,6 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\WebUI.pdb
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\WebUI.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\ref\WebUI.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\EntityFramework.SqlServer.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\EntityFramework.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MailKit.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MimeKit.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NETCore.MailKit.dll

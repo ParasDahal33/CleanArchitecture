@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Application.Common.Security;
+﻿
 using CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 using Microsoft.AspNetCore.Mvc;
 

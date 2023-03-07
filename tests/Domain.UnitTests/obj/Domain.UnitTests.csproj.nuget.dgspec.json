@@ -44,9 +44,9 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
-            "Microsoft.AspNet.Identity.EntityFramework": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[7.0.0-rc.2.22476.2, )"
             }
           },
           "imports": [

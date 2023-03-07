@@ -5,7 +5,6 @@ using CleanArchitecture.Application.Authentication.Commands.ReSendEmailConfirmat
 using CleanArchitecture.Application.Authentication.Commands.RevokeLoggedInUser;
 using CleanArchitecture.Application.Authentication.Commands.SendEmailConfirmation;
 using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
-using CleanArchitecture.Application.Common.Security;
 using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
 using Microsoft.AspNetCore.Authorization;
 using CleanArchitecture.WebUI.Controllers;
@@ -28,10 +27,10 @@ public class AuthController : ApiControllerBase
     {
         return await Mediator.Send(command);
     }
-    
+
     [HttpPost("send-email-confirmation")]
     public async Task<ActionResult<bool>> SendEmailConfirmation(SendEmailConfirmationCommand command)
-    { 
+    {
         return await Mediator.Send(command);
     }
 
@@ -60,21 +59,21 @@ public class AuthController : ApiControllerBase
 
     
     [HttpPost("revoke-loggedIn-user")]
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    [Authorize]
     public async Task<ActionResult<bool>>RevokeLoggedInUser(RevokeLoggedInUserCommand command)
     {
         return await Mediator.Send(command);
     }
 
     [HttpPost("change-password")]
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    [Authorize]
     public async Task <ActionResult<bool>> ChangePassword(ChangePasswordCommand command)
     {
         return await Mediator.Send(command);
     }
 
     [HttpPost("extend-password")]
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    [Authorize]
     public async Task<ActionResult<bool>> ExtendPassword(ExtendPasswordCommand command)
     {
         return await Mediator.Send(command);

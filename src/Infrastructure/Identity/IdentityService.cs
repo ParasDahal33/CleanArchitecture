@@ -32,7 +32,7 @@ public class IdentityService : IIdentityService
     private readonly IEmailService _emailService;
 
 
-    
+
     public IdentityService(
         UserManager<ApplicationUser> userManager,
         IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
@@ -47,7 +47,7 @@ public class IdentityService : IIdentityService
         _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
         _authorizationService = authorizationService;
         _db = db;
-        _configuration= configuration;
+        _configuration = configuration;
         _emailConfirmToken = emailConfrimationToken;
         _emailService = emailService;
         _httpContextAccessor = httpContextAccessor;
@@ -59,18 +59,6 @@ public class IdentityService : IIdentityService
         return user.UserName;
     }
 
-    public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
-    {
-        var user = new ApplicationUser
-        {
-            UserName = userName,
-            Email = userName,
-        };
-
-        var result = await _userManager.CreateAsync(user, password);
-
-        return (result.ToApplicationResult(), user.Id);
-    }
 
     public async Task<bool> IsInRoleAsync(string userId, string role)
     {
@@ -117,13 +105,13 @@ public class IdentityService : IIdentityService
         var lockOutResult = await _userManager.IsLockedOutAsync(user);
         if (_userManager.SupportsUserLockout && lockOutResult)
             throw new Exception($"User is locked out. Try again after 2 minutes");
-        var result = await _userManager.CheckPasswordAsync(user,password);
+        var result = await _userManager.CheckPasswordAsync(user, password);
         if (result == true)
         {
             if (user.UserStatus == UserStatus.InActive)
-               throw new Exception("User Status is Deactivated. Please Consult to your Administrator.");
+                throw new Exception("User Status is Deactivated. Please Consult to your Administrator.");
             if (user.PwdExpiry < DateTime.Now)
-               throw new Exception( "Your password has been expired");
+                throw new Exception("Your password has been expired");
             if (_userManager.SupportsUserLockout && await _userManager.GetAccessFailedCountAsync(user) > 0)
             {
                 await _userManager.ResetAccessFailedCountAsync(user);
@@ -141,13 +129,14 @@ public class IdentityService : IIdentityService
             await _db.UserRefreshTokens.AddAsync(userToken);
             await _db.SaveChangesAsync();
             await _userManager.UpdateAsync(user);
-            return ( new UserLoginResponse {
-            AccessToken= accessToken,
-            RefreshToken= refreshToken,
-            } );
+            return (new UserLoginResponse
+            {
+                AccessToken = accessToken,
+                RefreshToken = refreshToken,
+            });
         }
         else
-        { 
+        {
             if (_userManager.SupportsUserLockout && await _userManager.GetLockoutEnabledAsync(user))
             {
                 await _userManager.AccessFailedAsync(user);
@@ -165,7 +154,7 @@ public class IdentityService : IIdentityService
         var user = await _userManager.FindByIdAsync(id);
 
         if (user is null)
-           throw new NotFoundException("User not found");
+            throw new NotFoundException("User not found");
 
         if (user.EmailConfirmed && user.PasswordHash != null)
         {
@@ -202,7 +191,7 @@ public class IdentityService : IIdentityService
         return true;
     }
 
-    
+
     public async Task<bool> ReSendEmailConfirmation(string Id)
     {
         var user = await _userManager.FindByIdAsync(Id);
@@ -210,7 +199,7 @@ public class IdentityService : IIdentityService
             throw new BadRequestException("User not found");
         if (user.EmailConfirmed == true)
         {
-           throw new BadRequestException("User Email already confirmed.");
+            throw new BadRequestException("User Email already confirmed.");
         }
         var result = await SendEmailConfirmation(user.Email);
         if (result.Equals(false))
@@ -393,4 +382,25 @@ public class IdentityService : IIdentityService
         }
         return true;
     }
+
+    //public async Task<bool> CreateUserAsync(string fullName, string email, string password, string confirmPassword)
+    //{
+    //    var user = new ApplicationUser
+    //    {
+    //        FullName = fullName,
+    //        Email = email,
+    //    };
+    //    if (password != confirmPassword)
+    //        throw new BadRequestException("Incorrect Confirm Password");
+    //    user.AccountCreatedDate = DateTime.Now;
+    //    user.PwdExpiry = DateTime.Now.AddDays(90);
+    //    user.ExpiryDate = DateTime.Now.AddYears(10);
+    //    user.UserStatus = UserStatus.Active;
+    //    var result = await _userManager.CreateAsync(user, password);
+    //    if(!result.Succeeded) 
+    //    {
+    //        throw new BadRequestException($"Failed to create user: {fullName}");
+    //    }
+    //    return true;
+    //}
 }

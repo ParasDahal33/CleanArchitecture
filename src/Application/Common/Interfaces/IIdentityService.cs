@@ -13,7 +13,7 @@ public interface IIdentityService
 
     Task<bool> AuthorizeAsync(string userId, string policyName);
 
-    Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password);
+    //Task<bool> CreateUserAsync(string fullName, string email, string password, string confirmPassword);
 
     Task<UserLoginResponse> ValidateUser(string email, string password);
     Task<UserLoginResponse> RefreshToken(string AccessToken, string RefreshToken);

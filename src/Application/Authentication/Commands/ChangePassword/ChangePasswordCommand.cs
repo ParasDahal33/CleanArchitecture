@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Security;
 using MediatR;
 
 namespace CleanArchitecture.Application.Authentication.Commands.ChangePassword;
 
-[Authorize]
+
 public record ChangePasswordCommand : IRequest<bool>
 {
     public string OldPassword { get; set; } = string.Empty;
