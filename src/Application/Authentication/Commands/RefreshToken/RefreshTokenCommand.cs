@@ -8,7 +8,6 @@ using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

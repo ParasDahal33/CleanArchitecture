@@ -1,5 +1,5 @@
 ﻿
-using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Domain.Entities;
 
 namespace CleanArchitecture.Application.Common.Interfaces;
 

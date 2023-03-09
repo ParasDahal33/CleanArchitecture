@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using CleanArchitecture.Domain.Common;
 using Microsoft.AspNetCore.Identity;
 
-namespace CleanArchitecture.Infrastructure.Identity;
+namespace CleanArchitecture.Domain.Entities;
 
 public class ApplicationUser : IdentityUser
 {

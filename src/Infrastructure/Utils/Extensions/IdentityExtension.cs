@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Infrastructure.Persistence;
 using CleanArchitecture.Infrastructure.Utils.Helpers;
 using Microsoft.AspNetCore.Identity;

@@ -2,6 +2,8 @@
 using System.Security.Claims;
 using System.Security.Cryptography;
 using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.Domain.Entities;
+using CleanArchitecture.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,15 +15,18 @@ public class IdentityService : IIdentityService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
+    private readonly ApplicationDbContext _db; 
 
 
 
     public IdentityService(
         UserManager<ApplicationUser> userManager,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        ApplicationDbContext db)
     {
         _userManager = userManager;
         _configuration = configuration;
+        _db = db;
     }
 
     public async Task<string> GetUserNameAsync(string userId)
@@ -90,9 +95,6 @@ public class IdentityService : IIdentityService
         string link = $"{_configuration["AppUrl"]}/login/{action}?id={id}&token={token}";
         return link;
     }
-
-   
-
 
    
 }

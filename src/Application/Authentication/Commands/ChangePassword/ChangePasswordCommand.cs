@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

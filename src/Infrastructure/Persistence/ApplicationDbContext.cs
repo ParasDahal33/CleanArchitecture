@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
 using CleanArchitecture.Infrastructure.Persistence.Interceptors;
 using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -20,6 +19,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
         _mediator = mediator;
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
+    
     public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
     public DbSet<UserToken> UserRefreshTokens => Set<UserToken>();
     public DbSet<TodoList> TodoLists => Set<TodoList>();

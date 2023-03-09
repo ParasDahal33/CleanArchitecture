@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace CleanArchitecture.Infrastructure.Utils.Helpers;

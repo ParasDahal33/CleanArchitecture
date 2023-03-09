@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 

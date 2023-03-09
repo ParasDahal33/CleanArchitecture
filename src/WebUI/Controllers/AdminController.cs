@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Application.Administration.Commands.RegisterUser;
-using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
+using CleanArchitecture.Application.Administration.Queries.GetUsersWithPagination;
+using CleanArchitecture.Application.Common.Models;
 using CleanArchitecture.WebUI.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -16,5 +17,10 @@ public class AdminController : ApiControllerBase
     public async Task<ActionResult<bool>> RegisterUser(RegisterUserCommand command)
     {
         return await Mediator.Send(command);
+    }
+    [HttpGet("get-users")]
+    public async Task<ActionResult<PaginatedList<UserDto>>> GetUsers([FromQuery] GetUsersWithPaginationQuery query)
+    {
+        return await Mediator.Send(query);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Application.Common.Interfaces;

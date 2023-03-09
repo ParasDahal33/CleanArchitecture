@@ -1,6 +1,7 @@
 ﻿
 using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Infrastructure.Identity;
+using CleanArchitecture.Domain.Entities;
+using CleanArchitecture.Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
@@ -30,6 +31,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, b
         {
             FullName = request.FullName,
             Email = request.Email,
+            UserName = request.Email
         };
         if (request.Password != request.ConfirmPassword)
             throw new BadRequestException("Incorrect Confirm Password");
@@ -38,6 +40,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, b
         user.ExpiryDate = DateTime.Now.AddYears(10);
         user.UserStatus = UserStatus.Active;
         var result = await _userManager.CreateAsync(user, request.Password);
+        var createRole = await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
         if (!result.Succeeded)
         {
             throw new BadRequestException($"Failed to create user: {request.FullName}");

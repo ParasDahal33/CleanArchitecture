@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Utils.EmailConfiguration;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Enums;
-using CleanArchitecture.Infrastructure.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
