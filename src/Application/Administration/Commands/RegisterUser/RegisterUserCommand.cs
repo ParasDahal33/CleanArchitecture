@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Common.Interfaces;
+﻿
+using CleanArchitecture.Application.Common.Exceptions;
+using CleanArchitecture.Infrastructure.Identity;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 
 namespace CleanArchitecture.Application.Administration.Commands.RegisterUser;
 public record RegisterUserCommand : IRequest<bool>
@@ -18,16 +16,32 @@ public record RegisterUserCommand : IRequest<bool>
 
 public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, bool>
 {
-    private readonly IAdminService _adminService;
-    public RegisterUserCommandHandler(IAdminService adminService)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public RegisterUserCommandHandler(
+        UserManager<ApplicationUser> userManager)
     {
-        _adminService = adminService;
+        _userManager = userManager;
     }
   
 
-    public Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        var response = _adminService.CreateUserAsync(request.FullName,request.Email,request.Password,request.ConfirmPassword);
-        return response;
+        var user = new ApplicationUser
+        {
+            FullName = request.FullName,
+            Email = request.Email,
+        };
+        if (request.Password != request.ConfirmPassword)
+            throw new BadRequestException("Incorrect Confirm Password");
+        user.AccountCreatedDate = DateTime.Now;
+        user.PwdExpiry = DateTime.Now.AddDays(90);
+        user.ExpiryDate = DateTime.Now.AddYears(10);
+        user.UserStatus = UserStatus.Active;
+        var result = await _userManager.CreateAsync(user, request.Password);
+        if (!result.Succeeded)
+        {
+            throw new BadRequestException($"Failed to create user: {request.FullName}");
+        }
+        return true;
     }
 }

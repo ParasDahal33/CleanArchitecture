@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Qa5nT25jerDC8X8ck/B6tda9I+o1tdqSB0xsekBOkB/1nYGkk6eb2KSAvQFxY7TqXxbuUgChi/M37Q26YnNWpg==",
+  "dgSpecHash": "RxSFdtgSfUwcpaxp+pVkJb3/W8wR4y6Dbk5eOEBKzUHsgUpXDXmEt03QErLiwkHU2y72kLsfAm69VRtANzb84w==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.0-rc.2.22476.2\\microsoft.aspnetcore.cryptography.keyderivation.7.0.0-rc.2.22476.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\6.0.0\\microsoft.aspnetcore.dataprotection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\7.0.0-rc.2.22476.2\\microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.0-rc.2.22476.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.0-rc.2.22476.2\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.0-rc.2.22476.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.0-rc.2.22476.2\\microsoft.aspnetcore.identity.ui.7.0.0-rc.2.22476.2.nupkg.sha512",

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -37,10 +38,4 @@ public class EmailConfirmTokenHelper : TokenHelper, IEmailConfirmTokenHelper
     }
 }
 
-
-public interface IEmailConfirmTokenHelper
-{
-    Task<string> GenerateToken(ApplicationUser user);
-    Task<bool> ConfirmEmailAction(ApplicationUser user, string token);
-}
 

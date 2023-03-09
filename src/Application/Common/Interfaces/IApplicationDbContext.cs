@@ -6,6 +6,7 @@ namespace CleanArchitecture.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {
+    public DbSet<UserToken> UserRefreshTokens { get; }
     public DbSet<ApplicationUser> ApplicationUsers { get;}
     DbSet<TodoList> TodoLists { get; }
 

@@ -9,7 +9,7 @@ public class ApplicationUser : IdentityUser
 {
     [StringLength(255)]
     [Required]
-    public string? FullName { get; set; }
+    public string FullName { get; set; }
     [Required]
     public UserStatus UserStatus { get; set; }
     public DateTime PasswordChangeDate { get; set; }
@@ -19,9 +19,9 @@ public class ApplicationUser : IdentityUser
     public DateTime PwdExpiry { get; set; }
 
     [NotMapped]
-    public string? Role { get; set; }
+    public string Role { get; set; }
     [NotMapped]
-    public string? RoleId { get; set; }
+    public string RoleId { get; set; }
 
 }
 

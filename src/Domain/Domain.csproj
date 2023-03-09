@@ -5,7 +5,7 @@
         <RootNamespace>CleanArchitecture.Domain</RootNamespace>
         <AssemblyName>CleanArchitecture.Domain</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

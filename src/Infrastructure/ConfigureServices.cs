@@ -40,7 +40,6 @@ public static class ConfigureServices
         services.ConfigureIdentity();
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
-        services.AddTransient<IAdminService, AdminService>();
         services.AddTransient<IEmailService, EmailService>();
         services.AddTransient<IEmailConfirmTokenHelper, EmailConfirmTokenHelper>();
         services.AddTransient<IPasswordResetTokenHelper, PasswordResetTokenHelper>();

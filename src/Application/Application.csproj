@@ -5,13 +5,14 @@
         <RootNamespace>CleanArchitecture.Application</RootNamespace>
         <AssemblyName>CleanArchitecture.Application</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.4" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.2.22472.11" />
         <PackageReference Include="MimeKit" Version="3.5.0" />

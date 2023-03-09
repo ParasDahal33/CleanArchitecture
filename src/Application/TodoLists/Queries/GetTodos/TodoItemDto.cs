@@ -10,13 +10,13 @@ public class TodoItemDto : IMapFrom<TodoItem>
 
     public int ListId { get; set; }
 
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     public bool Done { get; set; }
 
     public int Priority { get; set; }
 
-    public string? Note { get; set; }
+    public string Note { get; set; }
 
     public void Mapping(Profile profile)
     {

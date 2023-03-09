@@ -297,6 +297,12 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "System.Text.Encodings.Web": "7.0.0-rc.2.22472.3"
+        }
+      },
       "Microsoft.AspNetCore.Http.Features/5.0.17": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0-rc.2.22472.3",
@@ -1139,6 +1145,7 @@
           "CleanArchitecture.Domain": "1.0.0",
           "FluentValidation.DependencyInjectionExtensions": "10.3.4",
           "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.EntityFrameworkCore": "7.0.0-rc.2.22472.11",
           "MimeKit": "3.5.0"
@@ -1354,6 +1361,13 @@
       "sha512": "sha512-d5YxOWRXS0H8Dxuazpg7B91wWzeeyUrOTDDLzFS3MHYzWGsPiNLNPX1cClAZ1Lu7/uVmPJfQ+md3fxyjB8Dkuw==",
       "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.0-rc.2.22476.2",
       "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.0-rc.2.22476.2.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http.Features/5.0.17": {
       "type": "package",
