@@ -493,6 +493,3 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.Integr
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.IntegrationTests\obj\Debug\net7.0\CleanArchitecture.Application.IntegrationTests.pdb
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.IntegrationTests\obj\Debug\net7.0\Application.IntegrationTests.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.IntegrationTests\obj\Debug\net7.0\ref\CleanArchitecture.Application.IntegrationTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.IntegrationTests\obj\Debug\net7.0\CleanArchitecture.Application.IntegrationTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.IntegrationTests\obj\Debug\net7.0\refint\CleanArchitecture.Application.IntegrationTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.IntegrationTests\obj\Debug\net7.0\CleanArchitecture.Application.IntegrationTests.pdb

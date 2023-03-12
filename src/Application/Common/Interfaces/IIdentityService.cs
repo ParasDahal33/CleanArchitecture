@@ -9,4 +9,6 @@ public interface IIdentityService
     Task<string> CreateAccessToken(ApplicationUser user);
     public string CreateRefreshToken();
     string CreateUrlLink(string id, string token, string action);
+    Task<string> RoleAsync(string userId);
+
 }

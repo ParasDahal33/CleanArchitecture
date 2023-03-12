@@ -137,6 +137,7 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Humanizer.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\IdentityModel.dll
+C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MailKit.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MediatR.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.AspNetCore.ApiAuthorization.IdentityServer.dll
@@ -167,11 +168,14 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MimeKit.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NETCore.MailKit.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NLog.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NLog.Extensions.Logging.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NLog.Web.AspNetCore.dll
+C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\BouncyCastle.Crypto.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Scrutor.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
@@ -226,11 +230,3 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\WebUI.pdb
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\WebUI.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\obj\Debug\net7.0\ref\WebUI.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MailKit.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\MimeKit.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\NETCore.MailKit.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\BouncyCastle.Crypto.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\EntityFramework.SqlServer.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\EntityFramework.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\Microsoft.AspNet.Identity.EntityFramework.dll

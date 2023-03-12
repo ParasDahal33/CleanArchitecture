@@ -40,7 +40,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, b
         user.ExpiryDate = DateTime.Now.AddYears(10);
         user.UserStatus = UserStatus.Active;
         var result = await _userManager.CreateAsync(user, request.Password);
-        var createRole = await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+        var createRole = await _userManager.AddToRoleAsync(user, RoleEnum.Admin.ToString());
         if (!result.Succeeded)
         {
             throw new BadRequestException($"Failed to create user: {request.FullName}");

@@ -1,9 +1,13 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,11 +18,8 @@ namespace CleanArchitecture.Infrastructure.Identity;
 public class IdentityService : IIdentityService
 {
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly ApplicationDbContext _db;
     private readonly IConfiguration _configuration;
-    private readonly ApplicationDbContext _db; 
-
-
-
     public IdentityService(
         UserManager<ApplicationUser> userManager,
         IConfiguration configuration,
@@ -34,8 +35,6 @@ public class IdentityService : IIdentityService
         var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
         return user.UserName;
     }
-
-
 
     public async Task<string> CreateAccessToken(ApplicationUser user)
     {
@@ -96,5 +95,10 @@ public class IdentityService : IIdentityService
         return link;
     }
 
-   
+    public async Task<string> RoleAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        var role = user.Role.FirstOrDefault();
+        return role.ToString();
+    }
 }

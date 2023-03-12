@@ -5,12 +5,9 @@ using CleanArchitecture.Application.Authentication.Commands.ReSendEmailConfirmat
 using CleanArchitecture.Application.Authentication.Commands.RevokeLoggedInUser;
 using CleanArchitecture.Application.Authentication.Commands.SendEmailConfirmation;
 using CleanArchitecture.Application.Authentication.Commands.ValidateUser;
-using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
 using Microsoft.AspNetCore.Authorization;
 using CleanArchitecture.WebUI.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Models;
 using CleanArchitecture.Application.Authentication.Commands.ChangePassword;
 using CleanArchitecture.Application.Authentication.Commands.ExtendPassword;
 

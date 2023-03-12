@@ -1,4 +1,5 @@
 using CleanArchitecture.Infrastructure.Persistence;
+using CleanArchitecture.Infrastructure.Utils.Extensions;
 using WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
 builder.Services.ConfigureAuth(configuration);
+builder.Services.ConfigureEmailSender(configuration);
 //builder.Services.ConfigureSwagger();
 
 var app = builder.Build();

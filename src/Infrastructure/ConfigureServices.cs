@@ -45,7 +45,7 @@ public static class ConfigureServices
         services.AddTransient<IPasswordResetTokenHelper, PasswordResetTokenHelper>();
         services.AddTransient<TokenHelper, EmailConfirmTokenHelper>();
         services.AddTransient<TokenHelper, PasswordResetTokenHelper>();
-        services.AddTransient<EmailConfiguration>();
+       
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
         return services;

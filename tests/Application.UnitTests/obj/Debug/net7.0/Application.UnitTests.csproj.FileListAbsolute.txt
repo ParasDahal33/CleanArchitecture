@@ -154,6 +154,3 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.UnitTe
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.UnitTests\obj\Debug\net7.0\CleanArchitecture.Application.UnitTests.pdb
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.UnitTests\obj\Debug\net7.0\Application.UnitTests.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\tests\Application.UnitTests\obj\Debug\net7.0\ref\CleanArchitecture.Application.UnitTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.UnitTests\obj\Debug\net7.0\CleanArchitecture.Application.UnitTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.UnitTests\obj\Debug\net7.0\refint\CleanArchitecture.Application.UnitTests.dll
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\tests\Application.UnitTests\obj\Debug\net7.0\CleanArchitecture.Application.UnitTests.pdb
