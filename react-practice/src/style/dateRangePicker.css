@@ -1,0 +1,37 @@
+@media (max-width: 640px) {
+      .rdrDateRangePickerWrapper {
+            display: flex;
+            justify-content: center;
+      }
+
+      .rdrCalendarWrapper {
+            width: 100%;
+      }
+
+      /* side nav bar */
+      .rdrDefinedRangesWrapper {
+            display: none;
+      }
+
+      /* top start data and end data selector */
+      .rdrDateDisplay {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+      }
+
+      /* top start data and end data selector */
+      .rdrDateDisplay > span {
+            width: 100%;
+            margin: 0rem !important;
+      }
+
+      /* date navigation bar */
+      .rdrMonthAndYearWrapper {
+            width: 100%;
+      }
+
+      .rdrMonth {
+            width: 100% !important;
+      }
+}

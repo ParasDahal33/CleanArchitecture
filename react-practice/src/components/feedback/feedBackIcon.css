@@ -1,0 +1,22 @@
+@tailwind components;
+
+@layer components {
+      .floating {
+            position: fixed;
+            left: -2rem;
+            top: 60%;
+            background-color: #ee8f23d2;
+            z-index: 0;
+            transform: rotate(-90deg);
+      }
+
+      .floating:hover {
+            background-color: #f3972e;
+      }
+
+      .btn__feedback {
+            border: none;
+            font-weight: 500;
+            color: white !important;
+      }
+}

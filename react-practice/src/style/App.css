@@ -1,0 +1,24 @@
+#app {
+      padding: 6rem 2% 10% 2%;
+      transition: 0.5s;
+}
+
+.swal2-popup i {
+      color: rgb(61, 94, 11) !important;
+      font-size: 0.9rem !important;
+}
+.swal2-popup h2,
+#swal2-html-container {
+      color: var(--default) !important;
+}
+.swal2-confirm {
+      background-color: var(--primary) !important;
+}
+.swal2-actions {
+      padding: 0rem 4rem !important;
+      width: 100% !important;
+}
+.swal2-actions > button {
+      padding: 0.3rem;
+      width: 100% !important;
+}

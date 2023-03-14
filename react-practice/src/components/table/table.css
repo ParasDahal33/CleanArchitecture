@@ -1,0 +1,29 @@
+@tailwind components;
+
+@layer components {
+      tbody > tr {
+            border-top: 0rem;
+            border-bottom: 0.1rem solid rgb(241, 240, 240) !important;
+      }
+      table > thead tr {
+            background-color: rgba(180, 122, 55, 0.048);
+      }
+      table > thead {
+            margin-bottom: 0.1em;
+      }
+
+      .head__fixed th {
+            z-index: -1;
+            background-color: #f7f4ee;
+            position: sticky; /* make the table heads sticky */
+            top: 0px; /* table head will be placed from the top of the table and sticks to it */
+      }
+
+      thead > tr > th {
+            padding: 0.75rem 1.5rem;
+      }
+      tbody > tr > th,
+      tbody > tr > td {
+            padding: 0.7rem 1.5rem !important;
+      }
+}

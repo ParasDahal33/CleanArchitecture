@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+      --primary: #e58a1d;
+      --default: rgb(19, 19, 61);
+}
+
+@layer base {
+      html {
+            font-family: "Noto Sans", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            @apply bg-white;
+            @apply text-default;
+      }
+}
+
+/**================================ spinner ============================**/
+
+.spinner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: rgb(19, 19, 61);
+      font-weight: bold;
+      letter-spacing: 0.6px;
+}
+
+.spinner h4 {
+      margin: 2px;    
+}
+
+.loader {
+      font-size: 20px;
+      margin: 50px auto;
+      text-indent: -9999em;
+      width: 11em;
+      height: 11em;
+      border-radius: 50%;
+      background: #e58a1d;
+      background: -moz-linear-gradient(left, #e58a1d 10%, rgba(255, 163, 43, 0)  42%);
+      background: -webkit-linear-gradient(left, #e58a1d 10%, rgba(255, 163, 43, 0)  42%);
+      background: -o-linear-gradient(left, #e58a1d 10%, rgba(255, 163, 43, 0)  42%);
+      background: -ms-linear-gradient(left, #e58a1d 10%, rgba(255, 163, 43, 0)  42%);
+      background: linear-gradient(to right, #e58a1d 10%, rgba(255, 163, 43, 0)  42%);
+      position: relative;
+      -webkit-animation: load3 1.4s infinite linear;
+      animation: load3 1.4s infinite linear;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+}
+
+.loader:before {
+      width: 50%;
+      height: 50%;
+      background: #e58a1d;
+      border-radius: 100% 0 0 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+}
+
+.loader:after {
+      background: #f6f5f7;
+      width: 75%;
+      height: 75%;
+      border-radius: 50%;
+      content: "";
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+}
+
+@-webkit-keyframes load3 {
+      0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+      }
+
+      100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+      }
+}
+
+@keyframes load3 {
+      0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+      }
+
+      100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+      }
+}
+
+@layer components {
+      /**================================ INPUT ============================**/
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+            box-shadow: 0 0 0px 1000px white inset;
+      }
+
+      input:active,
+      input:focus,
+      select:active,
+      select:focus,
+      textarea:active,
+      textarea:focus {
+            border-color: var(--primary) !important;
+      }
+
+      /** ================= BUDGET ======================== **/
+      .confirm {
+            border-radius: 1rem;
+            padding: 0.1rem 1rem;
+            background-color: rgba(0, 128, 0, 0.082);
+            color: green;
+            font-weight: 600;
+      }
+
+      .warning {
+            border-radius: 1rem;
+            padding: 0.1rem 1rem;
+            background-color: rgba(245, 225, 47, 0.26);
+            color: rgb(128, 109, 0);
+            font-weight: 600;
+      }
+}
+
+/**=============================== Scroll bar =======================**/
+
+::-webkit-scrollbar {
+      width: 3px;
+}
+::-webkit-scrollbar-thumb {
+      background: #d8d6d3;
+}
+::-webkit-scrollbar:horizontal {
+      width: 3px;
+}

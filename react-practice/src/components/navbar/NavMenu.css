@@ -1,0 +1,38 @@
+.action .nav__item-menu {
+      position: absolute;
+}
+
+.notification-menu,
+.profile-menu {
+      transition: 0.5s;
+      visibility: hidden;
+      opacity: 0;
+}
+
+.action .nav__item-menu.active,
+.notification-menu.active {
+      top: 70px;
+      visibility: visible;
+      opacity: 1;
+}
+
+.action .nav__item-menu::before,
+.notification-menu::before {
+      cursor: pointer;
+      content: "";
+      position: absolute;
+      top: -5px;
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      transform: rotate(45deg);
+      z-index: -1;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media (max-width: 530px) {
+      .notification-menu::before {
+            right: 140px !important;
+      }
+}

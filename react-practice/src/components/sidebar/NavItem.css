@@ -1,0 +1,17 @@
+@tailwind components;
+
+@layer components {
+      .nav-selected {
+            transform: scale(1.039);
+            transition: transform 0.3s, background-color 0.4s;
+      }
+
+      .sub-nav-selected {
+            transform: scale(1.02);
+            transition: transform 0.3s, background-color 0.3s;
+      }
+
+      #nav-item:hover {
+            background: #156eab;
+      }
+}
