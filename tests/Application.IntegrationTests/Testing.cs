@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Infrastructure.Identity;
+﻿using CleanArchitecture.Domain.Entities;
+using CleanArchitecture.Infrastructure.Identity;
 using CleanArchitecture.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

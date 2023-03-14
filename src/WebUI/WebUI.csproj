@@ -34,6 +34,8 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.5" />
     </ItemGroup>
 
+    <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/codeship-steps.json" /></VisualStudio></ProjectExtensions>
+
 
 
 

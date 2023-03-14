@@ -1,9 +1,9 @@
 ﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.Common.Security;
 using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
 using CleanArchitecture.Application.TodoLists.Commands.PurgeTodoLists;
 using CleanArchitecture.Domain.Entities;
 using FluentAssertions;
+using Microsoft.AspNetCore.Authorization;
 using NUnit.Framework;
 
 namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands;
