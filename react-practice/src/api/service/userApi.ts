@@ -4,10 +4,10 @@ import { createQueryString } from "../../utils/createQueryString";
 import { IUserRequestModel, IUserSearchData } from "../../model/userModel";
 
 export const userApi = {
-      getUsers: ({ userType, pageNumber, sortBy, order }: IUserSearchData) => {
+      getUsers: ({  pageNumber, sortBy, order }: IUserSearchData) => {
             const options = {
                   method: "GET",
-                  url: `${API_URL}/Admin/get-users${createQueryString({ pageNumber, sortBy, userType, order })}`,
+                  url: `${API_URL}/Admin/get-users${createQueryString({ pageNumber, sortBy, order })}`,
             };
 
             return axios.request(options);

@@ -1,14 +1,11 @@
 import { OrderBy, UserRole, UserStatus } from "../helpers/constants";
 
 export interface IUsersResponseModel {
-      userId: string;
+      id: string;
       userName: string;
       fullName: string;
       role: UserRole;
       email: string;
-      departmentId: number;
-      departmentName: string;
-      createdBy: string;
       userStatus: number;
       passwordChangeDate: Date;
       accountCreatedDate: Date;
@@ -19,7 +16,7 @@ export interface IUsersResponseModel {
 
 export interface IUsersResponse {
       totalPages: number;
-      userData: IUsersResponseModel[];
+      items: IUsersResponseModel[];
 }
 
 export interface IUserRequestModel {
@@ -39,7 +36,6 @@ export interface IUser {
 }
 
 export interface IUserSearchData {
-      departmentId?: number,
       fullName?: string,
       pageNumber?: number | null,
       order?: OrderBy,

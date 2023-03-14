@@ -7,7 +7,6 @@ import { SortingTH, Table, TableBody, TableHead } from "../../../components/tabl
 import NoSearchedDataMessage from "../../../components/error/NoSearchedDataMessage";
 import { TableButtonGroup, TableViewButton } from "../../../components/buttons/Buttons";
 import getIndex from "../../../utils/getIndex";
-import getLoggedInUserId from "../../../utils/getLoggedInUserId";
 import { IUserSearchData, IUsersResponseModel } from "../../../model/userModel";
 import { useURLQuery } from "../../../hooks/common/useURLQuery";
 import useUserApiRequest from "../../../hooks/users/useUserApiRequest";
@@ -72,11 +71,11 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                         </TableHead>
 
                         <TableBody isStatusSucceed={status === Status.Succeeded}>
-                              {users.userData.map((user: IUsersResponseModel, index: number) => {
+                              {users.items.map((user: IUsersResponseModel, index: number) => {
                                     //ToDo Avoid displaying one's own information.
                                     return (
                                            (
-                                                <tr key={user.userId}>
+                                                <tr key={user.id}>
                                                       <th scope="row">
                                                             {getIndex({
                                                                   currentPage: currentPageNumber,
@@ -121,7 +120,7 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                                                                               "
                                                                               onClick={() =>
                                                                                     reconfirmEmailRequest(
-                                                                                          user.userId
+                                                                                          user.id
                                                                                     )
                                                                               }
                                                                         >
@@ -134,7 +133,7 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                                                       <td>
                                                             <TableButtonGroup
                                                                   onDeleteClick={() =>
-                                                                        deleteUserHandler(user.userId)
+                                                                        deleteUserHandler(user.id)
                                                                   }
                                                                   onEditClick={() => {
                                                                         openEditModal(user);
@@ -158,13 +157,13 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                   <NoDataMessage
                         message="User"
                         isStatusSucceed={status === Status.Succeeded}
-                        haveData={showingResultOf === ShowingDataType.All && !users.userData.length}
+                        haveData={showingResultOf === ShowingDataType.All && !users.items.length}
                   />
 
                   <NoSearchedDataMessage
                         actionHandler={clearURLQuery}
                         isStatusSucceed={status === Status.Succeeded}
-                        toShow={showingResultOf === ShowingDataType.Searched && !users.userData.length}
+                        toShow={showingResultOf === ShowingDataType.Searched && !users.items.length}
                   />
 
                   <Pagination
@@ -174,7 +173,7 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                         onNextClick={() => changeURLPageNumber(currentPageNumber + 1)}
                         onPreviousClick={() => changeURLPageNumber(currentPageNumber - 1)}
                         isStatusSucceed={status === Status.Succeeded}
-                        haveData={users.userData !== null && users.userData.length > 0}
+                        haveData={users.items !== null && users.items.length > 0}
                   />
 
                   <WentWrongMessage isFailed={status === Status.Failed} errorMessage={error} />

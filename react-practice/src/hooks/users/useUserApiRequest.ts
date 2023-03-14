@@ -5,7 +5,6 @@ import {
       deleteUser,
       fetchUserByName,
       fetchUsers,
-      fetchUsersByDepartment,
       postReconfirmEmail,
       updateUser,
 } from "../../pages/users/feature/userRequest";
@@ -66,20 +65,7 @@ function useUserApiRequest() {
                   });
       };
 
-      const getUsersByDepartment = async (searchedData: IUserSearchData) => {
-            loadingSwalMessage();
-
-            await dispatch(fetchUsersByDepartment(searchedData))
-                  .unwrap()
-                  .then(() => {
-                        closeSwalLoading();
-                  })
-                  .catch((errorMessage) => {
-                        closeSwalLoading();
-
-                        errorToastMessage(errorMessage);
-                  });
-      };
+      
 
       /**
        * @function addNewUser
@@ -202,7 +188,6 @@ function useUserApiRequest() {
             userInfo,
             getUsers,
             getUser,
-            getUsersByDepartment,
             deleteUserHandler,
             editUser,
             addNewUser,

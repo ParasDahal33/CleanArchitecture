@@ -123,15 +123,4 @@ export const postReconfirmEmail = createAsyncThunk(
 );
 
 
-export const fetchUsersByDepartment = createAsyncThunk(
-      "admin/user/by-department",
-      async (searchDetail: IUserSearchData, { rejectWithValue }) => {
-            try {
-                  const response = await userApi.getUsersByDepartment(searchDetail);
 
-                  return response.data;
-            } catch (error: any) {
-                  return rejectWithValue(error.response.data);
-            }
-      }
-);

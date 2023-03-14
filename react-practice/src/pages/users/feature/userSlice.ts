@@ -6,7 +6,6 @@ import {
       deleteUser,
       fetchUserByName,
       fetchUsers,
-      fetchUsersByDepartment,
       updateUser,
 } from "./userRequest";
 
@@ -21,7 +20,7 @@ const initialState: UsersState = {
       error: undefined,
       status: Status.Pending,
       showingResultOf: ShowingDataType.All,
-      users: { totalPages: 0, userData: [] },
+      users: { totalPages: 0, items: [] },
 };
 
 const usersSlice = createSlice({
@@ -32,7 +31,7 @@ const usersSlice = createSlice({
                   state.error = undefined;
                   state.status = Status.Pending;
                   state.showingResultOf = ShowingDataType.All;
-                  state.users = { totalPages: 0, userData: [] };
+                  state.users = { totalPages: 0, items: [] };
             },
             changeUserStatusToIdle: (state) => {
                   state.status = Status.Idle;
@@ -77,10 +76,7 @@ const usersSlice = createSlice({
                   })
 
 
-                  .addCase(fetchUsersByDepartment.fulfilled, (state, action) => {
-                        state.users = action.payload;
-                        state.status = Status.Succeeded;
-                  })
+                 
 
 
                   .addCase(addUser.fulfilled, (state, _) => {
@@ -111,7 +107,7 @@ const usersSlice = createSlice({
                   .addCase(deleteUser.rejected, (state, _) => {
                         //to refetch all data
                         state.status = Status.Idle;
-                        state.users = { totalPages: 0, userData: [] };
+                        state.users = { totalPages: 0, items: [] };
                   })
       },
 });
