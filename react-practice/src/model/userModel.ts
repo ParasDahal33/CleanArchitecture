@@ -1,13 +1,9 @@
-import { OrderBy, UserRole, UserStatus, UserType } from "../helpers/constants";
+import { OrderBy, UserRole, UserStatus } from "../helpers/constants";
 
 export interface IUsersResponseModel {
       userId: string;
       userName: string;
-      staffId: number;
-      clientId: number;
-      clientName: string; //don't know why the F** it is here. if there is fullName
       fullName: string;
-      userType: UserType;
       role: UserRole;
       email: string;
       departmentId: number;
@@ -31,7 +27,6 @@ export interface IUserRequestModel {
       fullName: string;
       userName: string;
       email: string;
-      userType: UserType;
       clientId?: number;
       staffId?: number;
       userStatus: UserStatus;
@@ -46,7 +41,6 @@ export interface IUser {
 export interface IUserSearchData {
       departmentId?: number,
       fullName?: string,
-      userType?: UserType,
       pageNumber?: number | null,
       order?: OrderBy,
       sortBy?: string,

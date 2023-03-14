@@ -7,13 +7,11 @@ import { SortingTH, Table, TableBody, TableHead } from "../../../components/tabl
 import NoSearchedDataMessage from "../../../components/error/NoSearchedDataMessage";
 import { TableButtonGroup, TableViewButton } from "../../../components/buttons/Buttons";
 import getIndex from "../../../utils/getIndex";
-import { getUsersType } from "../../../utils/getUsersType";
 import getLoggedInUserId from "../../../utils/getLoggedInUserId";
 import { IUserSearchData, IUsersResponseModel } from "../../../model/userModel";
 import { useURLQuery } from "../../../hooks/common/useURLQuery";
 import useUserApiRequest from "../../../hooks/users/useUserApiRequest";
-import CanView from "../../../helpers/CanView";
-import { EmailConfirm, ShowingDataType, Status, UserStatus, UserType } from "../../../helpers/constants";
+import { EmailConfirm, ShowingDataType, Status, UserStatus } from "../../../helpers/constants";
 
 interface IUserTable {
       openEditModal: (user: IUsersResponseModel) => void;
@@ -54,14 +52,12 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                                           title="Full Name"
                                     />
 
-                                    <CanView onlyIf={getUsersType() === UserType.Client}>
                                           <SortingTH
                                                 className="text-start"
                                                 handlerSort={handlerSort}
                                                 name="Client"
                                                 title="Client"
                                           />
-                                    </CanView>
 
                                     <th scope="col" className="text-start">
                                           User Role
@@ -77,9 +73,9 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
 
                         <TableBody isStatusSucceed={status === Status.Succeeded}>
                               {users.userData.map((user: IUsersResponseModel, index: number) => {
-                                    // Avoid displaying one's own information.
+                                    //ToDo Avoid displaying one's own information.
                                     return (
-                                          user.userId !== getLoggedInUserId() && (
+                                           (
                                                 <tr key={user.userId}>
                                                       <th scope="row">
                                                             {getIndex({
@@ -92,9 +88,7 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
 
                                                       <td className="text-start">{user.fullName}</td>
 
-                                                      <CanView onlyIf={getUsersType() === UserType.Client}>
                                                             <td className="text-start">{user.fullName}</td>
-                                                      </CanView>
 
                                                       <td className="text-start">{user.role}</td>
 

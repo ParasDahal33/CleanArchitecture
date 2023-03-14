@@ -14,10 +14,9 @@ import { useURLQuery } from "../../hooks/common/useURLQuery";
 import useUserApiRequest from "../../hooks/users/useUserApiRequest";
 import { IUserSearchData, IUsersResponseModel } from "../../model/userModel";
 import { getUrlSortBy } from "../../utils/getUrlSortBy";
-import { getUsersType } from "../../utils/getUsersType";
 import { checkURLForKey } from "../../utils/checkURLForKey";
 import SuccessGuard from "../../helpers/SuccessGuard";
-import { FieldStatus, Status, UserType } from "../../helpers/constants";
+import { FieldStatus, Status } from "../../helpers/constants";
 import checkDynamicRoute from "../../utils/checkDynamicRoute";
 
 /**
@@ -37,7 +36,6 @@ export default function Users(): ReactElement {
             getUser,
       } = useUserApiRequest();
       const { search } = useLocation();
-      const { userType } = useParams();
       const dispatch = useAppDispatch();
       const [searchedValue, setSearchedValue] = useState<IUserSearchData>();
       const { addEditAction, openAddModal, openEditModal, closeModal, viewDetailModal } =
@@ -45,10 +43,7 @@ export default function Users(): ReactElement {
       const { currentPageNumber, currentOrderBy, changeURLQuery, clearURLQuery } =
             useURLQuery<IUserSearchData>();
 
-      // if the dynamic don't have the value matching with UserType enum
-      if (checkDynamicRoute({ type: UserType, dynamicRouteValue: userType, byKey: true })) {
-            return <Navigate to="/not-found" replace />;
-      }
+  
 
       // list in it should match with search input
       const URLHaveSearchParam = () => checkURLForKey(["fullName"]);
@@ -73,7 +68,6 @@ export default function Users(): ReactElement {
                   const urlParams = new URLSearchParams(window.location.search);
                   //if the search param is changed when view is in search state.
                   getUser({
-                        userType: getUsersType(),
                         fullName: searchedValue?.fullName || urlParams.get("fullName") || undefined,
                         order: currentOrderBy,
                         sortBy: getUrlSortBy(sortRequiredValues),
@@ -87,13 +81,12 @@ export default function Users(): ReactElement {
                   order: currentOrderBy,
                   pageNumber: currentPageNumber,
                   sortBy: getUrlSortBy(sortRequiredValues),
-                  userType: getUsersType(),
             });
       };
 
       useEffect(() => {
             fetchData();
-      }, [search, userType]);
+      },);
 
       useEffect(() => {
             if (status !== Status.Idle) return;

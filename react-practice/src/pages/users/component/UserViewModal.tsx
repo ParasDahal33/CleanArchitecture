@@ -1,12 +1,11 @@
 import { Modal } from "../../../components/modal/Modal";
 import NoDataMessage from "../../../components/NoDataMessage";
-import { getUsersType } from "../../../utils/getUsersType";
 import changeDateFormat from "../../../utils/changeDateFormat";
 import useUserApiRequest from "../../../hooks/users/useUserApiRequest";
 import { IUsersResponseModel } from "../../../model/userModel";
 import { IAddEditActionState2 } from "../../../model/actionModel";
 import CanView from "../../../helpers/CanView";
-import { UserStatus, EmailConfirm, UserType } from "../../../helpers/constants";
+import { UserStatus, EmailConfirm } from "../../../helpers/constants";
 
 interface IUserViewModalProps {
       closeModal: () => void;
@@ -120,7 +119,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                           <span>
                                                 <h5 className="font-bold">User Type</h5>
 
-                                                <p className="m-0 mt-1 ">{UserType[selectedData.userType]}</p>
+                                                
                                           </span>
                                     </section>
 
@@ -147,7 +146,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                     </section>
 
                                     <section className="flex flex-col gap-6">
-                                          <CanView onlyIf={getUsersType() === UserType.Client}>
+                                          
                                                 <span>
                                                       <h5 className="font-bold">User Client Name</h5>
 
@@ -155,9 +154,8 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                                             {selectedData.fullName}
                                                       </p>
                                                 </span>
-                                          </CanView>
 
-                                          <CanView onlyIf={getUsersType() === UserType.Staff}>
+                                          
                                                 <span>
                                                       <h5 className="font-bold">User Department</h5>
 
@@ -165,7 +163,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                                             {selectedData.departmentName}
                                                       </p>
                                                 </span>
-                                          </CanView>
+                                          
 
                                           <span>
                                                 <h5 className="font-bold">Registered By</h5>

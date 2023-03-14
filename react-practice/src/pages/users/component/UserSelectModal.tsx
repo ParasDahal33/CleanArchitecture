@@ -8,7 +8,7 @@ import { Table, TableHead } from "../../../components/table/Table";
 import WentWrongMessage from "../../../components/error/WentWrongMessage";
 import NoDataMessageSmall from "../../../components/error/NoDataMessageSmall";
 import SuccessGuard from "../../../helpers/SuccessGuard";
-import { ShowingDataType, Status, UserType } from "../../../helpers/constants";
+import { ShowingDataType, Status } from "../../../helpers/constants";
 import { resetUserToInitialState } from "../feature/userSlice";
 import getIndex from "../../../utils/getIndex";
 import { useAppDispatch } from "../../../app/hooks";
@@ -57,7 +57,6 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
             if (searchedValue) {
                   //if the searchedValue is changed when view is in search state.
                   getUser({
-                        userType: UserType.Staff,
                         fullName: searchedValue?.fullName || undefined,
                         pageNumber: currentPageNumber || 1,
                   });
@@ -66,7 +65,6 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
             }
 
             getUsers({
-                  userType: UserType.Staff,
                   pageNumber: currentPageNumber || 1,
             });
       }, [searchedValue, currentPageNumber]);

@@ -4,18 +4,12 @@ import Input from "../../../components/input/Input";
 import StatusInput from "../../../components/input/StatusInput";
 import { Modal, ModalFooter } from "../../../components/modal/Modal";
 import RoleSelectInput from "../../../components/input/DropDownInput";
-import StaffSelectInput from "../../../components/input/StaffSelectInput";
-import ClientSelectInput from "../../../components/input/ClientSelectInput";
 import { AddButtons, UpdateButtons } from "../../../components/buttons/ModalButtons";
 import { useURLQuery } from "../../../hooks/common/useURLQuery";
 import useUserApiRequest from "../../../hooks/users/useUserApiRequest";
 import { REGEX } from "../../../helpers/regex";
-import CanView from "../../../helpers/CanView";
-import { FieldStatus, UserRole, UserStatus, UserType } from "../../../helpers/constants";
-import { getUsersType } from "../../../utils/getUsersType";
+import { FieldStatus, UserRole, UserStatus } from "../../../helpers/constants";
 import { changeStatusToNumberIf } from "../../../utils/changeStatusType";
-import { IStaff } from "../../../model/staffModel";
-import { IClient } from "../../../model/clientModel";
 import { IAddEditActionState2 } from "../../../model/actionModel";
 import { IUserRequestModel, IUserSearchData, IUsersResponseModel } from "../../../model/userModel";
 
@@ -41,7 +35,7 @@ export default function UserModal({
 
       const formSubmitHandler = (newUser: IUserRequestModel) => {
             newUser.userName = newUser.email;
-            newUser.userType = getUsersType();
+            
 
             addNewUser(newUser).then(() => {
                   closeModal();
@@ -66,34 +60,14 @@ export default function UserModal({
             updatedUser.userId = selectedUser.userId;
             //api required status as int and form return string
             updatedUser.userStatus = changeStatusToNumberIf(updatedUser.userStatus);
-            updatedUser.userType = selectedUser.userType;
-            //if the user does not select the client then old clientId will be provided
-            updatedUser.clientId = updatedUser.clientId || selectedUser?.clientId;
-            //if the user does not select the staff then old staffId will be provided
-            updatedUser.staffId = updatedUser.staffId || selectedUser?.staffId;
 
             editUser(updatedUser).then(() => {
                   closeModal();
             });
       };
 
-      //get the value selected from staff select input and set to form
-      const staffSelectionHandler = (staff: IStaff) => {
-            if (staff.fullName === undefined) return;
-
-            setValue("staffId", staff.staffId, { shouldValidate: true });
-            setValue("fullName", staff.fullName, { shouldValidate: true });
-            // auto fill email while selecting staff
-            setValue("email", staff.email || "", { shouldValidate: true });
-      };
-
-      //get the value selected from client select input and set to form
-      const clientSelectionHandler = (client: IClient) => {
-            if (client.clientName === undefined) return;
-
-            setValue("clientId", client.id, { shouldValidate: true });
-            setValue("fullName", client.clientName, { shouldValidate: true });
-      };
+      
+      
 
       useEffect(() => {
             return () => {
@@ -132,56 +106,7 @@ export default function UserModal({
                                           })}
                                     </Input>
                               )}
-
-                              <CanView onlyIf={getUsersType() === UserType.Staff}>
-                                    <StaffSelectInput
-                                          selectedStaffData={{
-                                                staffId: selectedUser?.staffId,
-                                                fullName: selectedUser?.fullName,
-                                          }}
-                                          isReset={getValues("staffId") === undefined}
-                                          haveError={!!errors.staffId}
-                                          errorMessage={errors.staffId?.message}
-                                          submitSelectedStaff={staffSelectionHandler}
-                                    >
-                                          {register("staffId", {
-                                                required: {
-                                                      value: true,
-                                                      message: "Should be selected !!",
-                                                },
-                                                value:
-                                                      getUsersType() === UserType.Staff
-                                                            ? selectedUser?.staffId
-                                                            : 0, //0 means not selected
-                                          })}
-                                    </StaffSelectInput>
-                              </CanView>
-
-                              <CanView onlyIf={getUsersType() === UserType.Client}>
-                                    <ClientSelectInput
-                                          isReset={getValues("clientId") === undefined}
-                                          haveError={!!errors.clientId}
-                                          errorMessage={errors.clientId?.message}
-                                          selectedClientPrev={{
-                                                id: selectedUser?.clientId,
-                                                clientName: selectedUser?.fullName,
-                                          }}
-                                          submitSelectedClient={clientSelectionHandler}
-                                    >
-                                          {register("clientId", {
-                                                required: {
-                                                      value: true,
-                                                      message: "Should be selected !!",
-                                                },
-                                                value:
-                                                      getUsersType() === UserType.Client
-                                                            ? selectedUser?.clientId
-                                                            : 0, //0 means not selected
-                                          })}
-                                    </ClientSelectInput>
-                              </CanView>
-
-                              <CanView onlyIf={getUsersType() === UserType.Client}>
+                              
                                     <Input
                                           id="full-name"
                                           label="Full Name"
@@ -202,8 +127,6 @@ export default function UserModal({
                                                 },
                                           })}
                                     </Input>
-                              </CanView>
-
                               <Input
                                     label="Email"
                                     id="user-email"

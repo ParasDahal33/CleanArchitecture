@@ -9,8 +9,7 @@ import { resetToInitialState } from "./feature/ProfileSlice";
 import { IEditProfileRequest } from "../../model/profileModel";
 import { useAppDispatch } from "../../app/hooks";
 import useProfileApiRequest from "../../hooks/profile/useProfileApiRequest";
-import CanView from "../../helpers/CanView";
-import { EmailConfirm, Status, UserStatus, UserType } from "../../helpers/constants";
+import { EmailConfirm, Status, UserStatus } from "../../helpers/constants";
 
 function Profile() {
       const {
@@ -236,17 +235,15 @@ function Profile() {
                               data={EmailConfirm[`${user.emailConfirmed}`]}
                         />
 
-                        <ProfileText label="User Type" data={UserType[user.userType]} />
+                        
 
-                        <CanView onlyIf={user.userType === UserType.Client}>
-                              <ProfileText label="Client" data={user.fullName} />
-                        </CanView>
+                        
+                        <ProfileText label="Client" data={user.fullName} />
+                       
 
                         <ProfileText label="User Role" data={user.role} />
 
-                        <CanView onlyIf={user.userType === UserType.Staff}>
                               <ProfileText label="User Department" data={user.departmentName} />
-                        </CanView>
 
                         <ProfileText
                               label="User Status"

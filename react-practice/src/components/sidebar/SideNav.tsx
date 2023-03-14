@@ -3,9 +3,6 @@ import NavItem from "./NavItem";
 import MultiNavItem from "./multiNav/MultiNavItem";
 import { useAppSelector } from "../../app/hooks";
 import FeedBackIcon from "../feedback/FeedBackIcon";
-import AccessGuard from "../../helpers/AccessGuard";
-import { UserRole, UserType } from "../../helpers/constants";
-import AuthorizationGuard from "../../helpers/AuthorizationGuard";
 
 export default function SideNav() {
       const navigate = useNavigate();
@@ -47,78 +44,8 @@ export default function SideNav() {
                                     icon={<i className="bi bi-command"></i>}
                               />
 
-                              <AccessGuard allowedUsers={[UserType.Staff]}>
                                     <>
-                                          <MultiNavItem
-                                                main={{
-                                                      id: "staff", // it should match with url
-                                                      name: "Staff details",
-                                                      icon: <i className="bi bi-person-fill"></i>,
-                                                }}
-                                                navChildren={[
-                                                      {
-                                                            name: "Staff",
-                                                            path: "staff",
-                                                            icon: <i className="bi bi-person"></i>,
-                                                      },
-                                                      {
-                                                            name: "Extension",
-                                                            path: "staff/extension",
-                                                            icon: <i className="bi bi-telephone-plus"></i>,
-                                                      },
-                                                      {
-                                                            name: "Staff whereabouts",
-                                                            path: "staff/whereabouts",
-                                                            icon: <i className="bi bi-clock-history"></i>,
-                                                      },
-                                                ]}
-                                                changePageHandler={changePageHandler}
-                                          />
-
-                                          <MultiNavItem
-                                                main={{
-                                                      id: "client", // it should match with url
-                                                      name: "Client",
-                                                      icon: <i className="bi bi-people-fill"></i>,
-                                                }}
-                                                navChildren={[
-                                                      {
-                                                            name: "Local Clients",
-                                                            path: "client/local",
-                                                            icon: <i className="bi bi-people-fill"></i>,
-                                                      },
-                                                      {
-                                                            name: "International Clients",
-                                                            path: "client/international",
-                                                            icon: <i className="bi bi-people-fill"></i>,
-                                                      },
-                                                ]}
-                                                changePageHandler={changePageHandler}
-                                          />
-
-                                          <MultiNavItem
-                                                main={{
-                                                      id: "operation", // it should match with url
-                                                      name: "Operations",
-                                                      icon: <i className="bi bi-pc-display-horizontal"></i>,
-                                                }}
-                                                navChildren={[
-                                                      {
-                                                            name: "Restore Log",
-                                                            path: "operation/restore-log",
-                                                            icon: <i className="bi bi-bootstrap-reboot"></i>,
-                                                      },
-                                                      {
-                                                            name: "Leave Application",
-                                                            path: "operation/leave-application",
-                                                            icon: (
-                                                                  <i className="bi bi-journal-bookmark-fill"></i>
-                                                            ),
-                                                      },
-                                                ]}
-                                                changePageHandler={changePageHandler}
-                                          />
-
+                                          
                                           <MultiNavItem
                                                 main={{
                                                       id: "administration", // it should match with url
@@ -127,53 +54,16 @@ export default function SideNav() {
                                                 }}
                                                 navChildren={[
                                                       {
-                                                            name: "Product",
-                                                            path: "administration/product",
+                                                            name: "Users",
+                                                            path: "users",
                                                             icon: <i className="bi bi-box2-heart"></i>,
                                                       },
-                                                      {
-                                                            name: "Departments",
-                                                            path: "administration/department",
-                                                            icon: <i className="bi bi-building"></i>,
-                                                      },
+                                                      
                                                 ]}
-                                                multiSubNav={
-                                                      <AuthorizationGuard
-                                                            allowedRoles={[UserRole.Admin, UserRole.Manager]}
-                                                      >
-                                                            <MultiNavItem
-                                                                  main={{
-                                                                        id: "user-logins", // it should match with url
-                                                                        name: "User logins",
-                                                                        icon: (
-                                                                              <i className="bi bi-person-video3"></i>
-                                                                        ),
-                                                                  }}
-                                                                  navChildren={[
-                                                                        {
-                                                                              name: "Staff logins",
-                                                                              path: "administration/user-logins/staff",
-                                                                              icon: (
-                                                                                    <i className="bi bi-person"></i>
-                                                                              ),
-                                                                        },
-                                                                        {
-                                                                              name: "Client logins",
-                                                                              path: "administration/user-logins/client",
-                                                                              icon: (
-                                                                                    <i className="bi bi-person"></i>
-                                                                              ),
-                                                                        },
-                                                                  ]}
-                                                                  isThisSubMultiNav={true}
-                                                                  changePageHandler={changePageHandler}
-                                                            />
-                                                      </AuthorizationGuard>
-                                                }
+                                               
                                                 changePageHandler={changePageHandler}
                                           />
                                     </>
-                              </AccessGuard>
                         </section>
 
                         <FeedBackIcon />

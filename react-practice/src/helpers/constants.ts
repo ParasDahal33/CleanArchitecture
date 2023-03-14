@@ -49,14 +49,7 @@ export enum StaffStatus {
       NA,
 }
 
-// NOTE: Make sure this enum matches the one in backend.
-export enum StaffWhereaboutType {
-      Late,
-      Leave,
-      Field,
-      WorkFromHome,
-      Others
-}
+
 
 //status for registered user.
 export enum UserStatus {
@@ -70,26 +63,13 @@ export enum UserRole {
       Manager = "Manager",
 }
 
-export enum UserType {
-      Client,
-      Staff,
-}
 
 export enum EmailConfirm {
       "true" = "confirmed",
       "false" = "not confirmed",
 }
 
-export enum BloodGroup {
-      "A+ve" = "A+ve",
-      "A-ve" = "A-ve",
-      "B+ve" = "B+ve",
-      "B-ve" = "B-ve",
-      "O+ve" = "O+ve",
-      "O-ve" = "O-ve",
-      "AB+ve" = "AB+ve",
-      "AB-ve" = "AB-ve",
-}
+
 
 export enum RequestViaType {
       Phone = 'Phone',
@@ -99,19 +79,5 @@ export enum RequestViaType {
 }
 
 
-//Leave application
-export enum LeaveCause {
-      Casual,
-      Sick,
-      Compensation,
-      Compassionate,
-      Other,
-}
-
-export enum LeaveType {
-      "Full Day",
-      "First Half",
-      "Second Half",
-}
 
 export type COOKIES_TYPE = 'access_token' | 'refresh_token';
