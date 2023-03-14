@@ -4,12 +4,14 @@ using WebUI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+var myAllowSpecificOrigins = "AllowOrigin";
 // Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
 builder.Services.ConfigureAuth(configuration);
 builder.Services.ConfigureEmailSender(configuration);
+builder.Services.ConfigureCors(myAllowSpecificOrigins);
 //builder.Services.ConfigureSwagger();
 
 var app = builder.Build();
@@ -32,6 +34,7 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.UseCors(myAllowSpecificOrigins);
 app.UseCustomSwagger();
 app.UseHealthChecks("/health");
 app.UseHttpsRedirection();

@@ -16,7 +16,8 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddWebUIServices(this IServiceCollection services)
     {
-     
+   
+
         services.AddDatabaseDeveloperPageExceptionFilter();
 
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
@@ -31,6 +32,7 @@ public static class ConfigureServices
                 .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
         services.AddRazorPages();
+
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>

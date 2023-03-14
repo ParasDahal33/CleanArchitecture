@@ -75,4 +75,12 @@ public class AuthController : ApiControllerBase
     {
         return await Mediator.Send(command);
     }
+
+    [HttpGet]
+    [Route("verify")]
+    [Authorize]
+    public IActionResult Verify()
+    {
+        return Ok("User Verified!");
+    }
 }
