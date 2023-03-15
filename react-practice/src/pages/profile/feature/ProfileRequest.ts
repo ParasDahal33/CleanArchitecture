@@ -8,7 +8,7 @@ export const getLoggedInUser = createAsyncThunk(
       async () => {
             const response = await profileApi.getLoggedInUser();
 
-            return response.data.data;
+            return response.data;
       }
 );
 

@@ -75,7 +75,8 @@ function Profile() {
                               </section>
 
                               <section className="flex gap-1 justify-between w-full">
-                                    {(!toEdit.toShow || toEdit.fieldName !== "userName") && (
+                                    {(!toEdit.toShow || toEdit.fieldName !== "userName") && 
+                                    (
                                           <>
                                                 <p className="p-0 m-0">{user.userName}</p>
 
@@ -90,7 +91,8 @@ function Profile() {
                                           </>
                                     )}
 
-                                    {toEdit.toShow && toEdit.fieldName === "userName" && (
+                                    { toEdit.toShow && toEdit.fieldName === "userName" && 
+                                    (
                                           <span
                                                 className="flex flex-col w-full 
                                                       sm:flex-row
@@ -235,15 +237,11 @@ function Profile() {
                               data={EmailConfirm[`${user.emailConfirmed}`]}
                         />
 
-                        
-
-                        
-                        <ProfileText label="Client" data={user.fullName} />
-                       
+                      
+                              <ProfileText label="Client" data={user.fullName} />
 
                         <ProfileText label="User Role" data={user.role} />
 
-                              <ProfileText label="User Department" data={user.departmentName} />
 
                         <ProfileText
                               label="User Status"
@@ -253,7 +251,6 @@ function Profile() {
                               data={UserStatus[user.userStatus]}
                         />
 
-                        <ProfileText label="Added by" data={user.createdBy} />
 
                         <ProfileText
                               label="Registered date"

@@ -53,8 +53,8 @@ export enum StaffStatus {
 
 //status for registered user.
 export enum UserStatus {
-      Active,
       Inactive,
+      Active
 }
 
 export enum UserRole {
