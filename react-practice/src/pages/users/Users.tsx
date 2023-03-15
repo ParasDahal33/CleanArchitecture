@@ -36,6 +36,7 @@ export default function Users(): ReactElement {
             getUser,
       } = useUserApiRequest();
       const { search } = useLocation();
+      const { userType } = useParams();
       const dispatch = useAppDispatch();
       const [searchedValue, setSearchedValue] = useState<IUserSearchData>();
       const { addEditAction, openAddModal, openEditModal, closeModal, viewDetailModal } =
@@ -43,7 +44,10 @@ export default function Users(): ReactElement {
       const { currentPageNumber, currentOrderBy, changeURLQuery, clearURLQuery } =
             useURLQuery<IUserSearchData>();
 
-  
+      // if the dynamic don't have the value matching with UserType enum
+      // if (checkDynamicRoute({ type: UserType, dynamicRouteValue: userType, byKey: true })) {
+      //       return <Navigate to="/not-found" replace />;
+      // }
 
       // list in it should match with search input
       const URLHaveSearchParam = () => checkURLForKey(["fullName"]);
@@ -86,7 +90,7 @@ export default function Users(): ReactElement {
 
       useEffect(() => {
             fetchData();
-      },);
+      }, [search, userType]);
 
       useEffect(() => {
             if (status !== Status.Idle) return;

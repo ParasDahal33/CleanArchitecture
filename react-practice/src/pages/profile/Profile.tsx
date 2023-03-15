@@ -9,6 +9,7 @@ import { resetToInitialState } from "./feature/ProfileSlice";
 import { IEditProfileRequest } from "../../model/profileModel";
 import { useAppDispatch } from "../../app/hooks";
 import useProfileApiRequest from "../../hooks/profile/useProfileApiRequest";
+import CanView from "../../helpers/CanView";
 import { EmailConfirm, Status, UserStatus } from "../../helpers/constants";
 
 function Profile() {
@@ -75,8 +76,7 @@ function Profile() {
                               </section>
 
                               <section className="flex gap-1 justify-between w-full">
-                                    {(!toEdit.toShow || toEdit.fieldName !== "userName") && 
-                                    (
+                                    {(!toEdit.toShow || toEdit.fieldName !== "userName") && (
                                           <>
                                                 <p className="p-0 m-0">{user.userName}</p>
 
@@ -91,8 +91,7 @@ function Profile() {
                                           </>
                                     )}
 
-                                    { toEdit.toShow && toEdit.fieldName === "userName" && 
-                                    (
+                                    {toEdit.toShow && toEdit.fieldName === "userName" && (
                                           <span
                                                 className="flex flex-col w-full 
                                                       sm:flex-row
@@ -237,7 +236,7 @@ function Profile() {
                               data={EmailConfirm[`${user.emailConfirmed}`]}
                         />
 
-                      
+
                               <ProfileText label="Client" data={user.fullName} />
 
                         <ProfileText label="User Role" data={user.role} />

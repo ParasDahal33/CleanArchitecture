@@ -102,17 +102,17 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
                               </TableHead>
 
                               <tbody>
-                                    {users.userData.map((user: IUsersResponseModel, index: number) => {
+                                    {users.items.map((user: IUsersResponseModel, index: number) => {
                                           return (
                                                 <tr
                                                       className={`cursor-pointer ${
-                                                            selectedUserId === user.userId &&
+                                                            selectedUserId === user.id &&
                                                             "bg-selected font-bold"
                                                       }`}
-                                                      key={user.userId}
+                                                      key={user.id}
                                                       onClick={() => {
                                                             userSelectHandler({
-                                                                  userId: user.userId,
+                                                                  userId: user.id,
                                                                   fullName: user.fullName,
                                                             });
 
@@ -138,7 +138,7 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
                               pageName="user (staff)"
                               changePageHandler={changePageToUser}
                               isStatusSucceed={status === Status.Succeeded}
-                              toShow={showingResultOf === ShowingDataType.All && !users.userData.length}
+                              toShow={showingResultOf === ShowingDataType.All && !users.items.length}
                         />
 
                         <NoSearchedDataMessageSmall
@@ -146,7 +146,7 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
                               actionHandler={clearSearchHandler}
                               changePageHandler={changePageToUser}
                               isStatusSucceed={status === Status.Succeeded}
-                              toShow={showingResultOf === ShowingDataType.Searched && !users.userData.length}
+                              toShow={showingResultOf === ShowingDataType.Searched && !users.items.length}
                         />
 
                         <Pagination
@@ -156,7 +156,7 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
                               onNextClick={nextPageNumberHandler}
                               onPreviousClick={prevPageNumberHandler}
                               isStatusSucceed={status === Status.Succeeded}
-                              haveData={users.userData !== null && users.userData.length > 0}
+                              haveData={users.items !== null && users.items.length > 0}
                         />
                         <WentWrongMessage isFailed={status === Status.Failed} errorMessage={error} />
 
