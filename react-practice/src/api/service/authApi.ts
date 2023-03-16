@@ -23,11 +23,11 @@ export const authApi = {
       },
 
 
-      reconfirmEmail: (userId: string) => {
+      reconfirmEmail: (id: string) => {
             const options = {
                   method: "POST",
                   url: `${API_URL}/Auth/resend-email-confirmation`,
-                  data: { userId }
+                  data: { id }
             };
             return axios.request(options);
       },

@@ -37,7 +37,7 @@ public class AuthController : ApiControllerBase
         return await Mediator.Send(command);
     }
     [HttpGet("confirm-email")]
-    public async Task<ActionResult<EmailConfirmResponse>> ConfirmEmail(ConfirmEmailCommand command)
+    public async Task<ActionResult<EmailConfirmResponse>> ConfirmEmail([FromQuery]ConfirmEmailCommand command)
     {
         return await Mediator.Send(command);
     }

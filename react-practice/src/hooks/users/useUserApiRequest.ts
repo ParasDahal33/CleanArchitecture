@@ -157,7 +157,7 @@ function useUserApiRequest() {
                   });
       };
 
-      const reconfirmEmailRequest = (userId: string) => {
+      const reconfirmEmailRequest = (id: string) => {
             Swal.fire({
                   title: "Are you sure?",
                   icon: "warning",
@@ -170,7 +170,7 @@ function useUserApiRequest() {
                   if (result.isConfirmed) {
                         loadingSwalMessage();
 
-                        dispatch(postReconfirmEmail({ userId }))
+                        dispatch(postReconfirmEmail({ id }))
                               .unwrap()
                               .then((({ message }) => {
                                     successToastMessage({ title: "Confirmation successfully forwarded !!", message });

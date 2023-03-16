@@ -31,7 +31,7 @@ export interface IUserRequestModel {
 }
 
 export interface IUser {
-      userId?: string;
+      id?: string;
       fullName?: string;
 }
 

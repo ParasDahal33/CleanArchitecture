@@ -112,7 +112,7 @@ function UserSelectModal({ isModalOpen, closeModal, selectedUserId, userSelectHa
                                                       key={user.id}
                                                       onClick={() => {
                                                             userSelectHandler({
-                                                                  userId: user.id,
+                                                                  id: user.id,
                                                                   fullName: user.fullName,
                                                             });
 

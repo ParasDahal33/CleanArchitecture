@@ -111,13 +111,13 @@ export const deleteUser = createAsyncThunk(
 
 export const postReconfirmEmail = createAsyncThunk(
       "admin/reconfirmEmail/id",
-      async ({ userId }: { userId: string }, { rejectWithValue }) => {
+      async ({ id }: { id: string }, { rejectWithValue }) => {
             try {
-                  const response = await authApi.reconfirmEmail(userId);
+                  const response = await authApi.reconfirmEmail(id);
 
-                  return response.data.data;
+                  return response.data;
             } catch (error: any) {
-                  return rejectWithValue(error.response.data);
+                  return rejectWithValue(error.response.detail);
             }
       }
 );
