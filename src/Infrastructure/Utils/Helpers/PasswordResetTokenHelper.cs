@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Common.Exceptions;
+using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -38,8 +39,4 @@ public class PasswordResetTokenHelper : TokenHelper, IPasswordResetTokenHelper
     }
 }
 
-public interface IPasswordResetTokenHelper
-{
-    Task<string> GenerateToken(ApplicationUser user);
-    Task<bool> ResetPasswordAction(ApplicationUser user, string token, string newPassword);
-}
+

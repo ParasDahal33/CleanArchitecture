@@ -10,6 +10,7 @@ using CleanArchitecture.WebUI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Application.Authentication.Commands.ChangePassword;
 using CleanArchitecture.Application.Authentication.Commands.ExtendPassword;
+using CleanArchitecture.Application.Authentication.Commands.ResetPassword;
 
 namespace WebUI.Controllers;
 
@@ -76,6 +77,11 @@ public class AuthController : ApiControllerBase
         return await Mediator.Send(command);
     }
 
+    [HttpPost("reset-password")]
+    public async Task<ActionResult<bool>> ResetPassword(ResetPasswordCommand command)
+    {
+        return await Mediator.Send(command);
+    }
     [HttpGet]
     [Route("verify")]
     [Authorize]
@@ -83,4 +89,7 @@ public class AuthController : ApiControllerBase
     {
         return Ok("User Verified!");
     }
+
+
+  
 }
