@@ -31,6 +31,9 @@ public class GetloggedInUserQueryHandler : IRequestHandler<GetLoggedInUserQuery,
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
             throw new NotFoundException("User not found.");
+        var getUser = await _userManager.FindByIdAsync(user.Id);
+        var getRole = await _userManager.GetRolesAsync(getUser);
+        user.Role = getRole.FirstOrDefault();
         var mapUser = _mapper.Map<GetLoggedInUserDto>(user);
         return mapUser;
     }
