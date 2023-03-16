@@ -9,9 +9,12 @@ using AutoMapper.QueryableExtensions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Application.Common.Mappings;
 using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Enums;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace CleanArchitecture.Application.Administration.Queries.GetUsersWithPagination;
 public record GetUsersWithPaginationQuery : IRequest<PaginatedList<UserDto>>
@@ -28,13 +31,14 @@ public record GetUsersWithPaginationQuery : IRequest<PaginatedList<UserDto>>
 public class GetUsersWithPaginationQueryHandler : IRequestHandler<GetUsersWithPaginationQuery, PaginatedList<UserDto>>
 {
     private readonly IApplicationDbContext _context;
-    private readonly IIdentityService _identityService;
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly IMapper _mapper;
-    public GetUsersWithPaginationQueryHandler(IApplicationDbContext context, IMapper mapper, IIdentityService identityService)
+    public GetUsersWithPaginationQueryHandler(IApplicationDbContext context, 
+        IMapper mapper,  UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _mapper = mapper;
-        _identityService = identityService;
+        _userManager = userManager;
     }
 
     public async Task<PaginatedList<UserDto>> Handle(GetUsersWithPaginationQuery request, CancellationToken cancellationToken)
@@ -49,10 +53,14 @@ public class GetUsersWithPaginationQueryHandler : IRequestHandler<GetUsersWithPa
             null => query.OrderByDynamic(w => w.Id, request.OrderBy),
             _ => query.OrderByDynamic(w => EF.Property<object>(w, request.SorBy), request.OrderBy)
         };
-
-        return await sortedQuery.ProjectTo<UserDto>(_mapper.ConfigurationProvider)
-            .PaginatedListAsync(request.PageNumber, request.PageSize); ;
-
+        var users =await  sortedQuery.ProjectTo<UserDto>(_mapper.ConfigurationProvider).ToListAsync();
+        foreach (var user in users)
+        {
+            var getUser = await _userManager.FindByIdAsync(user.Id);
+            var getRole = await _userManager.GetRolesAsync(getUser);
+            user.Role = getRole.FirstOrDefault();
+        }
+        return users.PaginatedListOne(request.PageNumber, request.PageSize); 
     }
 
 

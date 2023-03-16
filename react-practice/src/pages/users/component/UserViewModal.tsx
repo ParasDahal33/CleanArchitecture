@@ -73,7 +73,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
 
                         <section>
                               <header className="w-auto bg-primary-mute-xl text-default">
-                                    <p className="p-3 mb-4 font-bold text-2xl">Employment Information</p>
+                                    <p className="p-3 mb-4 font-bold text-2xl">Account Information</p>
                               </header>
 
                               <article
@@ -106,7 +106,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                                                   "
                                                                   onClick={() =>
                                                                         reconfirmEmailRequest(
-                                                                              selectedData.userId
+                                                                              selectedData.id
                                                                         )
                                                                   }
                                                             >
@@ -117,9 +117,11 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                           </span>
 
                                           <span>
-                                                <h5 className="font-bold">User Type</h5>
+                                                      <h5 className="font-bold">User Name</h5>
 
-                                                
+                                                      <p className="m-0 mt-1 max-w-[11rem]">
+                                                            {selectedData.fullName}
+                                                      </p>
                                           </span>
                                     </section>
 
@@ -145,32 +147,7 @@ function UserViewModal({ addEditAction: { toShow, selectedData }, closeModal }: 
                                           </span>
                                     </section>
 
-                                    <section className="flex flex-col gap-6">
-                                          
-                                                <span>
-                                                      <h5 className="font-bold">User Client Name</h5>
-
-                                                      <p className="m-0 mt-1 max-w-[11rem]">
-                                                            {selectedData.fullName}
-                                                      </p>
-                                                </span>
-
-                                          
-                                                <span>
-                                                      <h5 className="font-bold">User Department</h5>
-
-                                                      <p className="m-0 mt-1 ">
-                                                            {selectedData.departmentName}
-                                                      </p>
-                                                </span>
-                                          
-
-                                          <span>
-                                                <h5 className="font-bold">Registered By</h5>
-
-                                                <p className="m-0 mt-1 ">{selectedData.createdBy}</p>
-                                          </span>
-                                    </section>
+                                    
                               </article>
                         </section>
 

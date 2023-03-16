@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DfKRRtGBuD8mLj7RmMgkextQy7l87Qc6C7ZHWJhaysqhoaKzP/CfcsrQmP1V2ryvh7FrZmEBw8EG07CCWsMpMQ==",
+  "dgSpecHash": "vqMvzVAjE2Qh3ogy0gelnDp/tEevNGra6aTQ1FD+kPFn64rWg7UlQljczs2mFtle6FuRZaMBWoO/dAfz2T/aFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [

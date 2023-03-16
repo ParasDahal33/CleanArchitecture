@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dEKLA0V4Tc3pPvl+aNnCQwZFEdH5yoIqs+FwA+qjsTF+ZhB5EtK7gzz7OBzLAtRr+XNw6NHj/xTpEiShGEGv8A==",
+  "dgSpecHash": "VeiN4qMkfWiP0CqPdp0CxGr9U2rHAC3FUWdA1q+MSAYVupQOoYE4nDzt5N2R5NoBqLm4QZiWHBQ1/y8TVXoSsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.IntegrationTests\\Application.IntegrationTests.csproj",
   "expectedPackageFiles": [

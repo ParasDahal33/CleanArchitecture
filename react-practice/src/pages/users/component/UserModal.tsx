@@ -57,7 +57,7 @@ export default function UserModal({
             if (selectedUser == null) return;
 
             //due to form does not store id of user
-            updatedUser.userId = selectedUser.userId;
+            updatedUser.userId = selectedUser.id;
             //api required status as int and form return string
             updatedUser.userStatus = changeStatusToNumberIf(updatedUser.userStatus);
 
