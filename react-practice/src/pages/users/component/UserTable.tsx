@@ -51,12 +51,6 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                                           title="Full Name"
                                     />
 
-                                          <SortingTH
-                                                className="text-start"
-                                                handlerSort={handlerSort}
-                                                name="Client"
-                                                title="Client"
-                                          />
 
                                     <th scope="col" className="text-start">
                                           User Role
@@ -86,8 +80,6 @@ export default function UserTable({ openEditModal, openViewModal }: IUserTable):
                                                       <td className="text-start">{user.userName}</td>
 
                                                       <td className="text-start">{user.fullName}</td>
-
-                                                            <td className="text-start">{user.fullName}</td>
 
                                                       <td className="text-start">{user.role}</td>
 

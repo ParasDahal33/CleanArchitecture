@@ -95,10 +95,5 @@ public class IdentityService : IIdentityService
         return link;
     }
 
-    public async Task<string> RoleAsync(string userId)
-    {
-        var user = await _userManager.FindByIdAsync(userId);
-        var role = user.Role.FirstOrDefault();
-        return role.ToString();
-    }
+    
 }
