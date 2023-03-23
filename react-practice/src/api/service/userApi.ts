@@ -46,7 +46,7 @@ export const userApi = {
       deleteUser: (userId: string) => {
             const options = {
                   method: "DELETE",
-                  url: `${API_URL}/Admin/user?userId=${userId}`,
+                  url: `${API_URL}/Admin/delete-user?id=${userId}`,
             };
             return axios.request(options);
       },

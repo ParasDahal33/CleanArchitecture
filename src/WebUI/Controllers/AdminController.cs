@@ -45,7 +45,7 @@ public class AdminController : ApiControllerBase
 
     [HttpDelete("delete-user")]
     //[Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Unit>> DeletUser(DeleteUserCommand command)
+    public async Task<ActionResult<bool>> DeletUser([FromQuery] DeleteUserCommand command)
     {
         return await Mediator.Send(command);
 

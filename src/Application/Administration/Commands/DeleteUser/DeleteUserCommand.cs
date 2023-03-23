@@ -7,34 +7,32 @@ using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Application.Administration.Commands.DeleteUser;
-public record DeleteUserCommand(string Id): IRequest;
 
-public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
+public record DeleteUserCommand : IRequest<bool>
 {
-    private readonly IApplicationDbContext _context;
-    public DeleteUserCommandHandler(IApplicationDbContext context)
+    public string Id { get; set; }
+}
+
+public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, bool>
+{
+    private readonly UserManager<ApplicationUser> _userManager;
+    public DeleteUserCommandHandler(UserManager<ApplicationUser> userManager)
     {
-        _context = context;
+        _userManager = userManager;
     }
 
-    public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _context.ApplicationUsers
-            .Where(l => l.Id == request.Id)
-            .SingleOrDefaultAsync(cancellationToken);
-
-        if (entity == null)
-        {
-            throw new NotFoundException(nameof(TodoList), request.Id);
-        }
-
-        _context.ApplicationUsers.Remove(entity);
-
-        await _context.SaveChangesAsync(cancellationToken);
-
-        return Unit.Value;
+        var user = await _userManager.FindByIdAsync(request.Id);
+        if (user == null)
+            throw new NotFoundException($"User with id {request.Id} not found.");
+        var result = await _userManager.DeleteAsync(user);
+        if (!result.Succeeded)
+            throw new BadRequestException("Unable to delete the user");
+        return result.Succeeded;
     }
 }

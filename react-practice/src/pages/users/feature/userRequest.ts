@@ -101,9 +101,9 @@ export const deleteUser = createAsyncThunk(
             try {
                   const response = await userApi.deleteUser(userId);
 
-                  return response.data;
+                  return response;
             } catch (error: any) {
-                  return rejectWithValue(error.response.data);
+                  return rejectWithValue(error.response.status);
             }
       }
 );
