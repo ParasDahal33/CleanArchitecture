@@ -33,10 +33,11 @@ export const authApi = {
       },
 
 
-      forgotPassword: ({ email }: IForgetPasswordModel) => {
+      forgotPassword: (request: IForgetPasswordModel) => {
             const options = {
                   method: "POST",
-                  url: `${API_URL}/Auth/forgot-password?email=${email}`,
+                  url: `${API_URL}/Auth/forgot-password`,
+                  data: request,
             };
 
             return axios.request(options);
