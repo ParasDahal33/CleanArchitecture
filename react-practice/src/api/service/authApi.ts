@@ -66,6 +66,7 @@ export const authApi = {
             const options = {
                   method: "POST",
                   url: `${API_URL}/Auth/revoke-loggedIn-user`,
+                  data: {}
             };
 
             return axios.request(options);
