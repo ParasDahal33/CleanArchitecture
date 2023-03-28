@@ -27,7 +27,7 @@ function SetPasswordForm({ formSubmitAction, buttonName }: ISetPasswordForm) {
       const [searchParams] = useSearchParams();
 
       const userId: string | null = searchParams.get("id") || null;
-      const token: string | null = searchParams.get("token") || null;
+      const token: string | null = searchParams.get("resetToken") || null;
 
       useEffect(() => {
             /**

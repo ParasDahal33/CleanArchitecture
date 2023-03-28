@@ -20,12 +20,10 @@ export interface IUsersResponse {
 }
 
 export interface IUserRequestModel {
-      userId?: string;
+      id?: string;
       fullName: string;
       userName: string;
       email: string;
-      clientId?: number;
-      staffId?: number;
       userStatus: UserStatus;
       role: UserRole;
 }

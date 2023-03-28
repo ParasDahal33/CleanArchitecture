@@ -82,7 +82,7 @@ function UserSelectInput({
                         <UserSelectModal
                               isModalOpen={toShowUserModal}
                               closeModal={showModalHandler}
-                              selectedUserId={selectedUser?.userId}
+                              selectedUserId={selectedUser?.id}
                               userSelectHandler={(user) => {
                                     submitSelectedUser(user);
 
