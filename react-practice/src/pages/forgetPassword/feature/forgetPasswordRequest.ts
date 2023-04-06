@@ -7,10 +7,9 @@ export const forgetPasswordRequest = createAsyncThunk(
       async (resetPasswordData: IForgetPasswordModel, { rejectWithValue }) => {
             try {
                   const response = await authApi.forgotPassword(resetPasswordData);
-                  return response.data;
+                  return response;
             } catch (error: any) {
-                  const response = await authApi.forgotPassword(resetPasswordData);
-                  return response.status;
+                  return rejectWithValue(error.data.detail)
             }
       }
 );

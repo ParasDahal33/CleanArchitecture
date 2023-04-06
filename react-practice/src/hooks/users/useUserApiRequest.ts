@@ -119,8 +119,8 @@ function useUserApiRequest() {
 
                         dispatch(deleteUser(userId))
                               .unwrap()
-                              .then(({ message }) => {
-                                    successToastMessage({ title: "Deleted!", message });
+                              .then(({data}) => {
+                                    successToastMessage({ title: "Deleted!", message: data});
                               })
                               .catch((errorMessage) => {
                                     closeSwalLoading();
@@ -146,7 +146,7 @@ function useUserApiRequest() {
             await dispatch(updateUser(updatedUser))
                   .unwrap()
                   .then(({ message }) => {
-                        successToastMessage({ title: "Updated!", message });
+                        successToastMessage({ title: "Updated!", message: message });
                   })
                   .catch((errorMessage) => {
                         closeSwalLoading();
@@ -173,7 +173,7 @@ function useUserApiRequest() {
                         dispatch(postReconfirmEmail({ id }))
                               .unwrap()
                               .then((({ message }) => {
-                                    successToastMessage({ title: "Confirmation successfully forwarded !!", message });
+                                    successToastMessage({ title: "Confirmation successfully forwarded !!", message: message });
                               }))
                               .catch((message) => {
                                     errorToastMessage(message);

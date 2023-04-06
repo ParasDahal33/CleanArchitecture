@@ -39,3 +39,4 @@ export interface IUserSearchData {
       order?: OrderBy,
       sortBy?: string,
 }
+
