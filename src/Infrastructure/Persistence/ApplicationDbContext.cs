@@ -26,16 +26,22 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
 
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
 
-    public DbSet<Brand> Brands => throw new NotImplementedException();
+    public DbSet<Brand> Brands => Set<Brand>();
 
-    public DbSet<CarModel> CarModels => throw new NotImplementedException();
+    public DbSet<CarModel> CarModels => Set<CarModel>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         base.OnModelCreating(builder);
-        
+
+        //builder.Entity<CarModel>()
+        //    .HasOne<Brand>(s => s.Brands)
+        //    .WithMany(g => g.CarModels)
+        //    .HasForeignKey(s => s.BrandId);
+
+
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

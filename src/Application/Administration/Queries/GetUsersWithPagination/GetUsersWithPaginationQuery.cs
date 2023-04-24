@@ -22,7 +22,7 @@ public record GetUsersWithPaginationQuery : IRequest<PaginatedList<UserDto>>
     public string FullName { get; set; } = "";
     public string UserId { get; set; }= null;
     public SortOrder OrderBy { get; set; }
-    public string SorBy { get; set; }
+    public string SortBy { get; set; }
     public int PageSize { get; set; } = 10;
     public int PageNumber { get; set; } = 1;
 
@@ -48,10 +48,10 @@ public class GetUsersWithPaginationQueryHandler : IRequestHandler<GetUsersWithPa
         {
             query = query.Where(u => u.Id == request.UserId);
         }
-        var sortedQuery = request.SorBy switch
+        var sortedQuery = request.SortBy switch
         {
             null => query.OrderByDynamic(w => w.Id, request.OrderBy),
-            _ => query.OrderByDynamic(w => EF.Property<object>(w, request.SorBy), request.OrderBy)
+            _ => query.OrderByDynamic(w => EF.Property<object>(w, request.SortBy), request.OrderBy)
         };
         var users =await  sortedQuery.ProjectTo<UserDto>(_mapper.ConfigurationProvider).ToListAsync();
         foreach (var user in users)
