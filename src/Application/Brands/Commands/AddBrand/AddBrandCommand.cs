@@ -30,9 +30,7 @@ public class AddBrandCommandHandler : IRequestHandler<AddBrandCommand, string>
         };
         entity.AddDomainEvent(new BrandsAddedEvent(entity));
         _context.Brands.Add(entity);
-
         await _context.SaveChangesAsync(cancellationToken);
-
         return ($"Brand {entity.Name} created successfully.");
     }
 }

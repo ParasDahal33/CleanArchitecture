@@ -40,11 +40,11 @@ public class GetBrandsWithPaginationQueryHandler : IRequestHandler<GetBrandsWith
         var query = _context.Brands.Where(u => u.Name.ToLower().Contains(request.BrandName.ToLower()));
         if (request.BrandId != 0)
         {
-            query = query.Where(u => u.BrandId == request.BrandId);
+            query = query.Where(u => u.Id == request.BrandId);
         }
         var sortedQuery = request.SortBy switch
         {
-            null => query.OrderByDynamic(w=> w.BrandId, request.OrderBy),
+            null => query.OrderByDynamic(w=> w.Id, request.OrderBy),
             _ => query.OrderByDynamic(w=> EF.Property<object>(w, request.SortBy), request.OrderBy),
         };
 

@@ -115,12 +115,6 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CarsId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -140,8 +134,6 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarsId");
-
                     b.ToTable("Brands");
                 });
 
@@ -153,7 +145,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CarId")
+                    b.Property<int?>("BrandsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
@@ -174,6 +166,8 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandsId");
 
                     b.ToTable("CarModels");
                 });
@@ -406,13 +400,13 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Entities.Brand", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Entities.CarModel", b =>
                 {
-                    b.HasOne("CleanArchitecture.Domain.Entities.CarModel", "Cars")
-                        .WithMany("Brands")
-                        .HasForeignKey("CarsId");
+                    b.HasOne("CleanArchitecture.Domain.Entities.Brand", "Brands")
+                        .WithMany("cars")
+                        .HasForeignKey("BrandsId");
 
-                    b.Navigation("Cars");
+                    b.Navigation("Brands");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.TodoItem", b =>
@@ -498,9 +492,9 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Entities.CarModel", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Entities.Brand", b =>
                 {
-                    b.Navigation("Brands");
+                    b.Navigation("cars");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.TodoList", b =>

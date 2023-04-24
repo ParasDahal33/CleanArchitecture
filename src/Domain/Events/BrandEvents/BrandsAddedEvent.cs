@@ -9,8 +9,8 @@ public class BrandsAddedEvent :BaseEvent
 {
     public BrandsAddedEvent(Brand brand) 
     { 
-        Brand = brand;
+        Brands = brand;
     }
 
-    public Brand Brand { get;}
+    public Brand Brands { get;}
 }

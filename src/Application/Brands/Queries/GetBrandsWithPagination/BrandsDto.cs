@@ -10,7 +10,7 @@ using CleanArchitecture.Domain.Entities;
 namespace CleanArchitecture.Application.Brands.Queries.GetBrandsWithPagination;
 public class BrandsDto: IMapFrom<Brand>
 {
-    public int BrandId { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     
 }
