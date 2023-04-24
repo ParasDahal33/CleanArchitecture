@@ -115,7 +115,6 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitecture\src\WebUI\bin\Debug\net7
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\appsettings.json
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\appsettings.Production.json
-C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\nswag.json
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\WebUI.staticwebassets.runtime.json
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\WebUI.exe
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\WebUI\bin\Debug\net7.0\WebUI.deps.json

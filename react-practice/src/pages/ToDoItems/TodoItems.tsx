@@ -1,97 +1,69 @@
-import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
-import Header from "../../components/header/Header";
-import AddButton from "../../components/buttons/AddButton";
-import LeaveApplicationModal from "./components/LeaveApplicationModal";
-import LeaveApplicationTable from "./components/LeaveApplicationTable";
-import LeaveApplicationSearch from "./components/LeaveApplicationSearch";
-import LeaveApplicationViewModal from "./components/LeaveApplicationViewModal";
-import SuccessGuard from "../../helpers/SuccessGuard";
-import { FieldStatus, Status } from "../../helpers/constants";
-import { resetToInitialState } from "./feature/leaveApplicationSlice";
-import { ILeaveApplicationModel, ILeaveApplicationSearchData } from "../../model/leaveApplicationModel";
+import { ReactElement, useEffect, useState } from "react";
+import useTodoItemApiRequest from "../../hooks/toDoItems/todoItemsApiRequest";
 import { useAppDispatch } from "../../app/hooks";
-import useAuthz from "../../hooks/auth/useAuthz";
+import { IToDoItemResponseModel, IToDoItemSearch } from "../../model/toDoItemModel";
 import useModal from "../../hooks/common/useModal";
 import { useURLQuery } from "../../hooks/common/useURLQuery";
-import useLeaveApplicationApiRequest from "../../hooks/leaveApplication/useLeaveApplicationApiRequest";
-import { getUrlSortBy } from "../../utils/getUrlSortBy";
-import { isObjectEmpty } from "../../utils/isObjectEmpty";
 import { checkURLForKey } from "../../utils/checkURLForKey";
-import { preservePageNumberHandler } from "../../utils/preservePageNumberHandler";
+import { Status } from "../../helpers/constants";
+import { resetUserToInitialState } from "../users/feature/userSlice";
+import Header from "../../components/header/Header";
+import SuccessGuard from "../../helpers/SuccessGuard";
+import Search from "../../components/search/Search";
+import AddButton from "../../components/buttons/AddButton";
+import { ToastContainer } from "react-toastify";
 
-function LeaveApplication() {
-      const authz = useAuthz();
-      const dispatch = useAppDispatch();
+
+
+export default function ToDoItems(): ReactElement{
       const {
-            leaveApplicationInfo: { status },
-            getLeaveApplicationsFiltered,
-            getLeaveApplications,
-      } = useLeaveApplicationApiRequest();
-      const { addEditAction, openEditModal, openAddModal, closeModal, viewDetailModal } =
-            useModal<ILeaveApplicationModel>();
-      const [searchedValue, setSearchedValue] = useState<ILeaveApplicationSearchData | undefined>();
+            toDoItemInfo: {status},
+            getToDoItem
+      } = useTodoItemApiRequest();
+      const dispatch = useAppDispatch();
+      const [searchedValue, setSearchedValue] = useState<IToDoItemSearch>();
+      const { addEditAction, openAddModal, openEditModal, closeModal, viewDetailModal } =
+            useModal<IToDoItemResponseModel>();
       const { currentPageNumber, currentOrderBy, changeURLQuery, clearURLQuery } =
-            useURLQuery<ILeaveApplicationSearchData>();
+            useURLQuery<IToDoItemSearch>();
 
-      // list in it should match with search input
-      const URLHaveSearchParam = () => checkURLForKey(["fullName", "leaveDate"]);
-      const sortRequiredValues = ["FullName", "FinalLeaveDate", "LeaveDate"];
+      const URLHaveSerachParam = () => checkURLForKey(["ListId"]);
+      
+      const searchHandler = (ListId: number) => {
+            setSearchedValue((prev) => {
+                  return {...prev, ListId};
+            });
 
-      // store the page number user was in before search
-      const preservedPageNumberIfEmpty = () => {
-            if (
-                  isObjectEmpty({
-                        fullName: searchedValue?.fullName,
-                        leaveDate: searchedValue?.leaveDate,
-                  })
-            ) {
-                  return;
-            }
-
-            preservePageNumberHandler.save(currentPageNumber);
-      };
-
-      const searchHandler = (searchedData: ILeaveApplicationSearchData) => {
-            setSearchedValue(searchedData);
-
-            changeURLQuery({ ...searchedData, pageNumber: 1, sortBy: "index" });
-
-            preservedPageNumberIfEmpty();
+            changeURLQuery({ListId: ListId, PageNumber:1, PageSize:10});
       };
 
       const clearSearchHandler = () => {
             setSearchedValue(undefined);
-
-            clearURLQuery(preservePageNumberHandler.get());
-      };
+            
+            clearURLQuery();
+      }
 
       const fetchData = () => {
-            if (URLHaveSearchParam()) {
-                  const urlParams = new URLSearchParams(window.location.search);
-                  //if the search param is changed when view is in search state.
-                  getLeaveApplicationsFiltered({
-                        fullName: searchedValue?.fullName || urlParams.get("fullName") || undefined,
-                        leaveDate: searchedValue?.leaveDate || urlParams.get("leaveDate") || undefined,
-                        order: currentOrderBy,
-                        pageNumber: currentPageNumber,
-                        sortBy: getUrlSortBy(sortRequiredValues),
+            if (  URLHaveSerachParam()) {
+                  getToDoItem({
+                        ListId : searchedValue?.ListId,
+                        PageNumber: currentPageNumber,
+
                   });
 
                   return;
             }
 
-            getLeaveApplications({
-                  order: currentOrderBy,
-                  pageNumber: currentPageNumber,
-                  sortBy: getUrlSortBy(sortRequiredValues),
+            getToDoItem({
+                  PageNumber: currentPageNumber,
+                  ListId: 1
             });
       };
 
       useEffect(() => {
             fetchData();
-      }, [search]);
-
+      });
+      
       useEffect(() => {
             if (status !== Status.Idle) return;
 
@@ -99,55 +71,38 @@ function LeaveApplication() {
       }, [status]);
 
       useEffect(() => {
-            //Make sure all the state data is set to initial
+            //to make sure all the state data is set to initial
             //when component is unmounted
             return () => {
-                  dispatch(resetToInitialState());
-
-                  //clear preserved pageNumber
-                  preservePageNumberHandler.clear();
+                  dispatch(resetUserToInitialState());
             };
       }, []);
 
       return (
-            <main>
-                  <Header>
+            <div>
+                   <Header>
                         <SuccessGuard isSucceed={status === Status.Succeeded}>
-                              <span
-                                    className="flex flex-col gap-4 align-bottom w-full justify-end
-                                          xl:flex-row
-                                    "
-                              >
-                                    <LeaveApplicationSearch
-                                          canViewSearch={authz.isAdmin || authz.isManager}
-                                          searchLeaveApplication={searchHandler}
-                                          clearFilter={clearSearchHandler}
-                                    />
+                              <Search
+                                    searchedURLKey="fullName"
+                                    searchedValue={searchHandler}
+                                    inputClearHandler={clearSearchHandler}
+                              />
 
-                                    <AddButton
-                                          title="New Leave Application"
-                                          buttonClickHandler={openAddModal}
-                                    />
-                              </span>
+                              <AddButton title="Add ToDoItem" buttonClickHandler={openAddModal} />
                         </SuccessGuard>
                   </Header>
 
-                  <LeaveApplicationTable openEditModal={openEditModal} viewDetailHandler={viewDetailModal} />
-
+                   <ToDoItemsTable openEditModal={openEditModal} openViewModal={viewDetailModal} />
+            {/*
                   {addEditAction.toShow && addEditAction.type !== FieldStatus.View && (
-                        <LeaveApplicationModal closeModal={closeModal} addEditAction={addEditAction} />
+                        <UserModal addEditAction={addEditAction} closeModal={closeModal} />
                   )}
 
                   {addEditAction.toShow && addEditAction.type === FieldStatus.View && (
-                        <LeaveApplicationViewModal
-                              closeModal={closeModal}
-                              selectedLeaveApplication={addEditAction.selectedData}
-                        />
-                  )}
+                        <UserViewModal addEditAction={addEditAction} closeModal={closeModal} />
+            )} */}
 
                   <ToastContainer />
-            </main>
-      );
+            </div>
+      )
 }
-
-export default LeaveApplication;

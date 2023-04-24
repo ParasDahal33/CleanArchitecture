@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ehl+mFHE8VuhS46AaBHmHiqzOB8gVR0awlsnXXGMdehNzma8EUtPJstc4ukPpCwrrHppU29hoz0j6myPjdLTgA==",
+  "dgSpecHash": "Tx8HJiaWw5/A55Uie1PnfnEgNhs1UPFRm0Y65TChBef5fSRAsUNY48eXge/P1LYtvQANSPJR2xhAMMnj/ybjHw==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
   "expectedPackageFiles": [

@@ -11,5 +11,9 @@ public interface IApplicationDbContext
 
     DbSet<TodoItem> TodoItems { get; }
 
+    DbSet<Brand> Brands { get; }
+
+    DbSet<CarModel> CarModels { get; }
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
