@@ -21,9 +21,4 @@
         <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Brands\Commands\EditBrand\" />
-      <Folder Include="Brands\Commands\DeleteBrand\" />
-    </ItemGroup>
-
 </Project>
