@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.UnitTests\\Application.UnitTests.csproj": {}
+    "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\tests\\Application.UnitTests\\Application.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj": {
+    "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj",
         "projectName": "CleanArchitecture.Application",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\Domain.csproj"
+              "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -85,21 +85,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\Domain.csproj": {
+    "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\Domain.csproj",
         "projectName": "CleanArchitecture.Domain",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -150,21 +150,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "CleanArchitecture.Infrastructure",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -178,8 +178,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj"
+              "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj"
               }
             }
           }
@@ -249,21 +249,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.UnitTests\\Application.UnitTests.csproj": {
+    "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\tests\\Application.UnitTests\\Application.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.UnitTests\\Application.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\tests\\Application.UnitTests\\Application.UnitTests.csproj",
         "projectName": "CleanArchitecture.Application.UnitTests",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.UnitTests\\Application.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\tests\\Application.UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\tests\\Application.UnitTests\\Application.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\tests\\Application.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -277,11 +277,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Application\\Application.csproj"
+              "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -335,7 +335,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

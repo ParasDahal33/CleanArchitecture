@@ -29,6 +29,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public DbSet<Brand> Brands => Set<Brand>();
 
     public DbSet<CarModel> CarModels => Set<CarModel>();
+    public DbSet<CarType> CarTypes => Set<CarType>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

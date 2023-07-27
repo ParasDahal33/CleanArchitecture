@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\WebUI\\wwwroot\\api\\specification.json",
+      "Id": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\WebUI\\wwwroot\\api\\specification.json",
       "PackagePath": "staticwebassets\\api\\specification.json"
     },
     {
-      "Id": "C:\\Users\\HP\\OneDrive\\Documents\\dotnet\\CleanArchitectureAuthAndAuthorization\\src\\WebUI\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\WebUI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {

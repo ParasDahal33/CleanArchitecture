@@ -42,7 +42,7 @@ public class ApplicationDbContextInitialiser
         try
         {
             await TrySeedAsync();
-           
+
         }
         catch (Exception ex)
         {
