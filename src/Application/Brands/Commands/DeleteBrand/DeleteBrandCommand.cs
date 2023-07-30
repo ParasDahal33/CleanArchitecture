@@ -10,9 +10,9 @@ using CleanArchitecture.Domain.Events.BrandEvents;
 using MediatR;
 
 namespace CleanArchitecture.Application.Brands.Commands.DeleteBrand;
-public record DeleteBrandCommand(int Id) : IRequest<string>;
+public record DeleteBrandCommand(int Id) : IRequest<Unit>;
 
-public class DelteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, string>
+public class DelteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, Unit>
 {
     private readonly IApplicationDbContext _context;
     public DelteBrandCommandHandler(IApplicationDbContext context)
@@ -20,7 +20,7 @@ public class DelteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, stri
         _context = context;
     }
 
-    public async Task<string> Handle(DeleteBrandCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteBrandCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.Brands
             .FindAsync(new object[] { request.Id }, cancellationToken);
@@ -29,7 +29,7 @@ public class DelteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, stri
         _context.Brands.Remove(entity);
         entity.AddDomainEvent(new BrandDeletedEvent(entity));
         await _context.SaveChangesAsync(cancellationToken);
-        return ($"Brand with id {request.Id} deleted successfully.");
+        return Unit.Value;
 
     }
 }

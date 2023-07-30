@@ -9,12 +9,12 @@ using CleanArchitecture.Domain.Events.BrandEvents;
 using MediatR;
 
 namespace CleanArchitecture.Application.Brands.Commands.AddBrand;
-public record AddBrandCommand : IRequest<string>
+public record AddBrandCommand : IRequest<Unit>
 {
     public string Name { get; init; }
 }
 
-public class AddBrandCommandHandler : IRequestHandler<AddBrandCommand, string>
+public class AddBrandCommandHandler : IRequestHandler<AddBrandCommand, Unit>
 {
     private readonly IApplicationDbContext _context;
     public AddBrandCommandHandler(IApplicationDbContext context)
@@ -22,7 +22,7 @@ public class AddBrandCommandHandler : IRequestHandler<AddBrandCommand, string>
         _context = context;
     }
 
-    public async Task<string> Handle(AddBrandCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(AddBrandCommand request, CancellationToken cancellationToken)
     {
         var entity = new Brand
         {
@@ -31,6 +31,6 @@ public class AddBrandCommandHandler : IRequestHandler<AddBrandCommand, string>
         entity.AddDomainEvent(new BrandsAddedEvent(entity));
         _context.Brands.Add(entity);
         await _context.SaveChangesAsync(cancellationToken);
-        return ($"Brand {entity.Name} created successfully.");
+        return Unit.Value;
     }
 }

@@ -9,14 +9,14 @@ using CleanArchitecture.Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture.Application.Brands.Commands.EditBrand;
-public record EditBrandCommand : IRequest<string>
+public record EditBrandCommand : IRequest<Unit>
 {
     public int Id { get; set; }
 
     public string Name { get; set; }
 }
 
-public class EditBrandCommandHandler : IRequestHandler<EditBrandCommand, string>
+public class EditBrandCommandHandler : IRequestHandler<EditBrandCommand, Unit>
 {
     private readonly IApplicationDbContext _context;
 
@@ -25,7 +25,7 @@ public class EditBrandCommandHandler : IRequestHandler<EditBrandCommand, string>
         _context = context;
     }
 
-    public async Task<string> Handle(EditBrandCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(EditBrandCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.Brands
             .FindAsync(new object[] { request.Id }, cancellationToken);
@@ -33,6 +33,6 @@ public class EditBrandCommandHandler : IRequestHandler<EditBrandCommand, string>
             throw new NotFoundException(nameof(Brand), request.Id);
         entity.Name = request.Name;
         await _context.SaveChangesAsync(cancellationToken);
-        return ($"Brand with id {request.Id} updated successfully.");
+        return Unit.Value;
     }
 }
