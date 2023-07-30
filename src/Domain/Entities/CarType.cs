@@ -9,4 +9,5 @@ public class CarType : BaseAuditableEntity
 {
     public string TypeName { get; set; }
     public IList<CarModel> cars { get; private set; } = new List<CarModel>();
+
 }

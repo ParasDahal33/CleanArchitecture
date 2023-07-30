@@ -9,7 +9,7 @@ using CleanArchitecture.Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture.Application.Brands.Commands.EditBrand;
-public class EditBrandCommand : IRequest<string>
+public record EditBrandCommand : IRequest<string>
 {
     public int Id { get; set; }
 

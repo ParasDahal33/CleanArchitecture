@@ -10,6 +10,8 @@ public class EditBrandCommandValidator : AbstractValidator<EditBrandCommand>
 {
     public EditBrandCommandValidator()
     {
+        RuleFor(v => v.Id)
+            .NotEmpty();
         RuleFor(v => v.Name)
             .MaximumLength(256)
             .NotEmpty();
