@@ -24,7 +24,6 @@
     <ItemGroup>
       <Folder Include="Model\Commands\DeleteModel\" />
       <Folder Include="Model\Commands\EditModel\" />
-      <Folder Include="Model\EventHandlers\" />
       <Folder Include="Model\Queries\GetModelWithPagination\" />
     </ItemGroup>
 
