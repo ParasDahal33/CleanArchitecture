@@ -7,6 +7,8 @@ using CleanArchitecture.Application.Brands.Commands.AddBrand;
 using CleanArchitecture.WebUI.Controllers;
 using CleanArchitecture.Application.Brands.Commands.EditBrand;
 using CleanArchitecture.Application.Brands.Commands.DeleteBrand;
+using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Application.Brands.Queries.GetBrandsWithPagination;
 
 namespace WebUI.Controllers;
 [Route("api/[controller]")]
@@ -22,7 +24,7 @@ public class BrandController : ApiControllerBase
         return await Mediator.Send(command);
     }
 
-    [HttpPost("{id}")]
+    [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Unit>> EditBrand(EditBrandCommand command)
     {
@@ -34,5 +36,12 @@ public class BrandController : ApiControllerBase
     public async Task<ActionResult<Unit>> DeleteBrand(DeleteBrandCommand command)
     {
         return await Mediator.Send(command);
+    }
+
+    [HttpGet("get-brands")]
+    [Authorize]
+    public async Task<ActionResult<PaginatedList<BrandsDto>>> GetBrands([FromQuery] GetBrandsWithPaginationQuery query)
+    {
+        return await Mediator.Send(query);
     }
 }
