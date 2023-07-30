@@ -1,6 +1,0 @@
-{
-  "CleanArchitecture.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Application",
-  "CleanArchitecture.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Domain",
-  "CleanArchitecture.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\Infrastructure",
-  "WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\ASUS\\Documents\\Office\\Practice Project\\CleanArchitecture\\src\\WebUI"
-}

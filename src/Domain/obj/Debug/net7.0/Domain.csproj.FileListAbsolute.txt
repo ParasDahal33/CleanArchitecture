@@ -22,15 +22,3 @@ C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\Domain\obj\Debug\net7.0\refint\CleanArchitecture.Domain.dll
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\Domain\obj\Debug\net7.0\CleanArchitecture.Domain.pdb
 C:\Users\HP\OneDrive\Documents\dotnet\CleanArchitectureAuthAndAuthorization\src\Domain\obj\Debug\net7.0\ref\CleanArchitecture.Domain.dll
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\bin\Debug\net7.0\CleanArchitecture.Domain.deps.json
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\bin\Debug\net7.0\CleanArchitecture.Domain.dll
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\bin\Debug\net7.0\CleanArchitecture.Domain.pdb
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\CleanArchitecture.Domain.dll
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\refint\CleanArchitecture.Domain.dll
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\CleanArchitecture.Domain.pdb
-C:\Users\ASUS\Documents\Office\Practice Project\CleanArchitecture\src\Domain\obj\Debug\net7.0\ref\CleanArchitecture.Domain.dll
