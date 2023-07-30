@@ -9,7 +9,7 @@ using CleanArchitecture.Domain.Events.ModelEvents;
 using MediatR;
 
 namespace CleanArchitecture.Application.Model.Commands.AddModel;
-public class AddModelCommand : IRequest<Unit>
+public record AddModelCommand : IRequest<Unit>
 {
     public string Name { get; init; }
     public Brand Brands { get; init; }

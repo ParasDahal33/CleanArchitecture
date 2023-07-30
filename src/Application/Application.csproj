@@ -22,7 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Model\Commands\DeleteModel\" />
       <Folder Include="Model\Queries\GetModelWithPagination\" />
     </ItemGroup>
 
