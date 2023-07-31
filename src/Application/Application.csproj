@@ -23,6 +23,9 @@
 
     <ItemGroup>
       <Folder Include="Model\Queries\GetModelWithPagination\" />
+      <Folder Include="Type\Commands\" />
+      <Folder Include="Type\EventHandlers\" />
+      <Folder Include="Type\Queries\" />
     </ItemGroup>
 
 </Project>
