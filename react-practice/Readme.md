@@ -1,6 +1,6 @@
-# MBOffice System(Frontend)
+# Clean Architecture s(Frontend)
 
-Frontend application for MicroBankers Nepal Pvt.Ltd. product, resource and content management system.
+Clean Architecture full stack wb application
 
 ## Installing the application
 

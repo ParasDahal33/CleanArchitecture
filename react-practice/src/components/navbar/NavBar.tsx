@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../app/hooks";
 import CanView from "../../helpers/CanView";
 import { Status } from "../../helpers/constants";
 import { alterSideBarState } from "../sidebar/navSlice";
-import OfficeLogo from "../../assets/image/mbnepal-portal.png";
+import OfficeLogo from "../../assets/image/navicon.png";
 import favIcon from "../../assets/image/favicon.ico";
 
 export default function NavBar() {

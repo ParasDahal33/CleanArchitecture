@@ -50,7 +50,7 @@ function ConfirmEmail() {
                                                 xl:text-lg
                                           "
                                     >
-                                          Welcome to MBN Application! Please set your new password.
+                                          Welcome to Clean Architecture Project! Please set your new password.
                                     </h4>
                               </header>
                               <main className="flex flex-col gap-3">

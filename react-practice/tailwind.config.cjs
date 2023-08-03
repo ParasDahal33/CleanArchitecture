@@ -6,7 +6,7 @@ module.exports = {
       theme: {
             colors: {
                   white: "#fafbfc",
-                  primary: "#e58a1d",
+                  primary: "#1e67ac",
                   default: "rgb(19, 19, 61)",
                   mute: "rgba(180, 180, 180)",
                   "mute-xl": "rgb(145, 144, 144)",
