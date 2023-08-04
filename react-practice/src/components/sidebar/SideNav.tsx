@@ -2,7 +2,6 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
 import MultiNavItem from "./multiNav/MultiNavItem";
 import { useAppSelector } from "../../app/hooks";
-import FeedBackIcon from "../feedback/FeedBackIcon";
 
 export default function SideNav() {
       const navigate = useNavigate();
@@ -66,7 +65,7 @@ export default function SideNav() {
                                     </>
                         </section>
 
-                        <FeedBackIcon />
+                        
                   </nav>
             </>
       );

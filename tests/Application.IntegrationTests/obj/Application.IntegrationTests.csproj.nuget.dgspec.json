@@ -339,6 +339,10 @@
               "target": "Package",
               "version": "[7.0.9, )"
             },
+            "Microsoft.Extensions.Hosting.WindowsServices": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "NLog": {
               "target": "Package",
               "version": "[5.2.2, )"

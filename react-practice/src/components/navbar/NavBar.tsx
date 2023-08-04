@@ -6,7 +6,6 @@ import CanView from "../../helpers/CanView";
 import { Status } from "../../helpers/constants";
 import { alterSideBarState } from "../sidebar/navSlice";
 import OfficeLogo from "../../assets/image/navicon.png";
-import favIcon from "../../assets/image/favicon.ico";
 
 export default function NavBar() {
       const navigate = useNavigate();
@@ -25,7 +24,7 @@ export default function NavBar() {
                         {isLoggedIn !== Status.Succeeded && (
                               <img
                                     id="nav-img-logo"
-                                    className="w-[15rem] h-[3rem] object-cover cursor-pointer"
+                                    className="w-[12rem] h-[3rem] object-cover cursor-pointer"
                                     onClick={() => {
                                           navigate("/");
                                     }}
@@ -56,7 +55,7 @@ export default function NavBar() {
                                           onClick={() => {
                                                 navigate("/");
                                           }}
-                                          src={favIcon}
+                                          src={OfficeLogo}
                                     />
                               </>
                         )}

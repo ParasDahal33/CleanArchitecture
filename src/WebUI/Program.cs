@@ -1,6 +1,7 @@
 using CleanArchitecture.Infrastructure.Persistence;
 using CleanArchitecture.Infrastructure.Utils.Extensions;
 using WebUI.Extensions;
+using WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -12,7 +13,8 @@ builder.Services.AddWebUIServices();
 builder.Services.ConfigureAuth(configuration);
 builder.Services.ConfigureEmailSender(configuration);
 builder.Services.ConfigureCors(myAllowSpecificOrigins);
-//builder.Services.ConfigureSwagger();
+builder.Services.AddWindowsService();
+builder.Services.AddHostedService<ServiceA>();
 
 var app = builder.Build();
 
@@ -46,4 +48,8 @@ app.UseAuthorization();
 app.MapControllers();
 app.UseDeveloperExceptionPage();
 
+if ((app.Environment.IsStaging() || app.Environment.IsProduction()) && !args.Contains("dev"))
+{
+    app.Run(configuration.GetSection("RunUrl").Value);
+}
 app.Run();

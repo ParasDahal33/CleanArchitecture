@@ -13,10 +13,9 @@ public static class CorsExtension
                 .WithOrigins(
                     "http://127.0.0.1:5173",
                     "http://127.0.0.1:5210",
-                    "http://192.168.0.137:1337",
+                    "http://localhost:5173",
                     "*",
-                    "https://portal.mbnepal.com",
-                    "http://portal.mbnepal.com"
+                    "http://192.168.0.137:1337"
                     )
                 .AllowAnyMethod()
                 .AllowAnyHeader()

@@ -17,7 +17,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -165,11 +165,46 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int?>("TypesId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BrandsId");
 
+                    b.HasIndex("TypesId");
+
                     b.ToTable("CarModels");
+                });
+
+            modelBuilder.Entity("CleanArchitecture.Domain.Entities.CarType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarTypes");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.TodoItem", b =>
@@ -406,7 +441,13 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                         .WithMany("cars")
                         .HasForeignKey("BrandsId");
 
+                    b.HasOne("CleanArchitecture.Domain.Entities.CarType", "Types")
+                        .WithMany("cars")
+                        .HasForeignKey("TypesId");
+
                     b.Navigation("Brands");
+
+                    b.Navigation("Types");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.TodoItem", b =>
@@ -493,6 +534,11 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Entities.Brand", b =>
+                {
+                    b.Navigation("cars");
+                });
+
+            modelBuilder.Entity("CleanArchitecture.Domain.Entities.CarType", b =>
                 {
                     b.Navigation("cars");
                 });
