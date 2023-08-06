@@ -24,7 +24,7 @@ public class EditBrandCommandHandler : IRequestHandler<EditBrandCommand, Unit>
     {
         _context = context;
     }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     public async Task<Unit> Handle(EditBrandCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.Brands

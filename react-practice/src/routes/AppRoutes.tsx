@@ -11,6 +11,7 @@ import ForgetPassword from "../pages/forgetPassword/ForgetPassword";
 import ConfirmEmail from "../pages/setPassword/confirmEmail/ConfirmEmail";
 import ResetPassword from "../pages/setPassword/resetPassword/ResetPassword";
 import Users from "../pages/users/Users";
+import Brands from "../pages/brand/brands";
 
 export default function AppRoutes() {
       return (
@@ -33,6 +34,11 @@ export default function AppRoutes() {
                               <Route
                                                 path="users"
                                                 element={<Users />}>
+
+                              </Route>
+                              <Route
+                                                path="brands"
+                                                element={<Brands />}>
 
                               </Route>
 

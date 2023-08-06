@@ -75,6 +75,8 @@ export default function UserModal({
             };
       }, []);
 
+      
+
       return (
             <Modal
                   size="w-[40%]"

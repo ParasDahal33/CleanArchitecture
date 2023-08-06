@@ -6,6 +6,7 @@ import currentUserReducer from "../pages/login/feature/loginSlice";
 import profileReducer from "../pages/profile/feature/ProfileSlice";
 import forgetPasswordReducer from "../pages/forgetPassword/feature/forgetPasswordSlice";
 import toDoItemReducer from "../pages/ToDoItems/feature/toDoItemsSlice";
+import brandSlice from "../pages/brand/feature/brandSlice";
 export const store = configureStore({
       reducer: {
             token: tokenReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
             currentUser: currentUserReducer,
             nav: navReducer,
             users: usersReducer,
+            brands: brandSlice,
             profile: profileReducer,
             toDoItem: toDoItemReducer,
       },

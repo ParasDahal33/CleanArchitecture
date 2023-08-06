@@ -5,6 +5,11 @@ export interface IBrandResponseModel {
     name: string;
 }
 
+export interface IBrandsResponse{
+    totalPages: number;
+    items: IBrandResponseModel[];
+}
+
 export interface IBrandSearchData{
     brandName?: string,
     brandId?: number,

@@ -62,6 +62,23 @@ export default function SideNav() {
                                                
                                                 changePageHandler={changePageHandler}
                                           />
+                                          <MultiNavItem
+                                                main={{
+                                                      id: "car", // it should match with url
+                                                      name: "Cars ",
+                                                      icon: <i className="bi bi-truck-front-fill"></i>,
+                                                }}
+                                                navChildren={[
+                                                      {
+                                                            name: "Brand",
+                                                            path: "brands",
+                                                            icon: <i className="bi bi-blockquote-left"></i>,
+                                                      },
+                                                      
+                                                ]}
+                                               
+                                                changePageHandler={changePageHandler}
+                                          />
                                     </>
                         </section>
 
