@@ -9,9 +9,8 @@ using CleanArchitecture.Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture.Application.Model.Commands.EditModel;
-public record EditModelCommand : IRequest<Unit>
+public record EditModelCommand(int Id) : IRequest<Unit>
 {
-    public int Id { get; init; }
     public string  Name{ get; init; }
     public Brand Brands { get; init; }
     public CarType Types { get; init; }

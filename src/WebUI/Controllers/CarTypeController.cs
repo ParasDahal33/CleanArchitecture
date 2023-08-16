@@ -21,6 +21,7 @@ public class CarTypeController : ApiControllerBase
     {
         return await Mediator.Send(command);
     }
+
     [HttpPut("edit-type")]
     [Authorize(Roles ="Admin")]
     public async Task<ActionResult<Unit>> EditCarType(EditTypeCommand command)

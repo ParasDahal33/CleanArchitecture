@@ -13,13 +13,13 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Application.CarTypes.Queries.GetCarTypeInPagination;
-public record GetCarTypeInPaginationQuery: IRequest<PaginatedList<CarTypeResponse>>
+public record GetCarTypeInPaginationQuery : IRequest<PaginatedList<CarTypeResponse>>
 {
     public string Name { get; set; }
     public SortOrder OrderBy { get; set; }
     public string SortBy { get; set; }
     public int PageNumber { get; set; } = 1;
-    public int PageSize { get; set; } = 10;   
+    public int PageSize { get; set; } = 10;
 }
 
 public class GetCarTypeInPaginationQueryHandler : IRequestHandler<GetCarTypeInPaginationQuery, PaginatedList<CarTypeResponse>>
@@ -33,7 +33,12 @@ public class GetCarTypeInPaginationQueryHandler : IRequestHandler<GetCarTypeInPa
     }
     public async Task<PaginatedList<CarTypeResponse>> Handle(GetCarTypeInPaginationQuery request, CancellationToken cancellationToken)
     {
-        var query = _context.CarTypes.Where(u => u.TypeName.ToLower().Contains(request.Name.ToLower()));
+        var query = _context.CarTypes.AsQueryable();
+
+        if (!string.IsNullOrEmpty(request.Name))
+        {
+            query = query.Where(u => u.TypeName.ToLower().Contains(request.Name.ToLower()));
+        }
         var sortedQuery = request.SortBy switch
         {
             null => query.OrderByDynamic(w => w.Id, request.OrderBy),

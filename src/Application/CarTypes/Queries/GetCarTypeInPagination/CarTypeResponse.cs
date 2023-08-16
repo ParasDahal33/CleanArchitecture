@@ -7,7 +7,7 @@ using CleanArchitecture.Application.Common.Mappings;
 using CleanArchitecture.Domain.Entities;
 
 namespace CleanArchitecture.Application.CarTypes.Queries.GetCarTypeInPagination;
-public class CarTypeResponse : IMapFrom<CarType>
+public class CarTypeResponse :IMapFrom<CarType>
 {
     public int Id { get; set; }
     public string TypeName { get; set; }
