@@ -30,6 +30,5 @@ public class DelteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, Unit
         entity.AddDomainEvent(new BrandDeletedEvent(entity));
         await _context.SaveChangesAsync(cancellationToken);
         return Unit.Value;
-
     }
 }

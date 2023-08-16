@@ -22,7 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="CarTypes\Queries\" />
       <Folder Include="Model\Queries\GetModelWithPagination\" />
     </ItemGroup>
 
