@@ -18,7 +18,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
                 { typeof(NotFoundException), HandleNotFoundException },
                 { typeof(BadRequestException), HandleBadRequestException },
                 { typeof(UnauthorizedAccessException), HandleUnauthorizedAccessException },
-                { typeof(ForbiddenAccessException), HandleForbiddenAccessException },
+                { typeof(ForbiddenAccessException), HandleForbiddenAccessException }
             };
     }
 
@@ -42,6 +42,22 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
             HandleInvalidModelStateException(context);
             return;
         }
+
+        // Handle all other exceptions with a status code of 500
+        var details = new ProblemDetails
+        {
+            Status = StatusCodes.Status500InternalServerError,
+            Title = "Internal Server Error",
+            Type = "Server Error",
+            Detail = "Contact the Service Provider"
+        };
+
+        context.Result = new ObjectResult(details)
+        {
+            StatusCode = StatusCodes.Status500InternalServerError
+        };
+
+        context.ExceptionHandled = true;
     }
 
     private void HandleValidationException(ExceptionContext context)
@@ -50,7 +66,9 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 
         var details = new ValidationProblemDetails(exception.Errors)
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+            Title = "Validation Exception.",
+            Detail = exception.Message
         };
 
         context.Result = new BadRequestObjectResult(details);
@@ -62,7 +80,9 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
         var details = new ValidationProblemDetails(context.ModelState)
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+            Title = "Invalid Model Exception.",
+            Detail = context.Exception.Message
         };
 
         context.Result = new BadRequestObjectResult(details);
@@ -76,7 +96,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 
         var details = new ProblemDetails()
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+            Type = "Not Found",
             Title = "The specified resource was not found.",
             Detail = exception.Message
         };
@@ -109,7 +129,8 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         {
             Status = StatusCodes.Status401Unauthorized,
             Title = "Unauthorized",
-            Type = "https://tools.ietf.org/html/rfc7235#section-3.1"
+            Type = "https://tools.ietf.org/html/rfc7235#section-3.1",
+            Detail = "Authorization is required"
         };
 
         context.Result = new ObjectResult(details)
@@ -122,11 +143,13 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 
     private void HandleForbiddenAccessException(ExceptionContext context)
     {
+        var exception = (ForbiddenAccessException)context.Exception;
         var details = new ProblemDetails
         {
             Status = StatusCodes.Status403Forbidden,
             Title = "Forbidden",
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.3"
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.3",
+            Detail = exception.Message
         };
 
         context.Result = new ObjectResult(details)
@@ -136,4 +159,6 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 
         context.ExceptionHandled = true;
     }
+
+
 }
