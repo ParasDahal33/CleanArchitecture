@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CleanArchitecture.Application.Common.Mappings;
+using CleanArchitecture.Domain.Entities;
+
+namespace CleanArchitecture.Application.Model.Queries.GetModelWithPagination;
+public class CarModelResponse : IMapFrom<CarModel>
+{
+    public int Id { get; set; }
+    public string ModelName { get; set; }
+    public Brand Brands { get; set; }
+    public CarType Types { get; set; }
+}

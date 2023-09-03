@@ -1,6 +1,8 @@
-﻿using CleanArchitecture.Application.Model.Commands.AddModel;
+﻿using CleanArchitecture.Application.Common.Models;
+using CleanArchitecture.Application.Model.Commands.AddModel;
 using CleanArchitecture.Application.Model.Commands.DeleteModel;
 using CleanArchitecture.Application.Model.Commands.EditModel;
+using CleanArchitecture.Application.Model.Queries.GetModelWithPagination;
 using CleanArchitecture.WebUI.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +28,7 @@ public class CarModelController : ApiControllerBase
     {
         return await Mediator.Send(command);
     }
-    
+
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Unit>> DeleteModel(DeleteModelCommand command)
@@ -34,6 +36,10 @@ public class CarModelController : ApiControllerBase
         return await Mediator.Send(command);
     }
 
-    //public async Task<ActionResult<PaginatedList<>>>
+    [HttpGet("get-model")]
+    public async Task<ActionResult<PaginatedList<CarModelResponse>>> GetModelWithPagination([FromQuery] GetModelWithPaginationQuery query)
+    {
+        return await Mediator.Send(query);
+    }
 
 }
